@@ -86,6 +86,7 @@ CREATE TABLE db.course_instance(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(100) NOT NULL,
+	uci_course_id INT NOT NULL UNIQUE,
 	professor_id INT NOT NULL,
 	term ENUM("WINTER", "SPRING", "SUMMER", "FALL"),
 	year INT NOT NULL,
