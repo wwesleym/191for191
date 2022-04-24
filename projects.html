@@ -1,161 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <link rel="stylesheet" href="style.css">
-   <title>191 for 191!</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>191 for 191!</title>
 
 </head>
 <style>
-.collapsible {
-  background-color: #0064A4;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 75%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-.replacebutton{
-  background-color: #acabab;
-  color: #0064A4;
-  cursor: pointer;
-  padding: 0px;
-  width: 60%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-.previewbutton{
-  background-color: #ffffff;
-  color: #0064A4;
-  cursor: pointer;
-  padding: 13px;
-  width: 35%;
-  border: outset #0064A4;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.savebutton{
-  background-color: #0064A4;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 15px;
-  width: 35%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #1b3d6d;
-}
-
-.content {
-  padding: 0 18px;
-  display: active;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
+    .collapsible {
+        background-color: #edf5fa;
+        color: #1a609e;
+        cursor: pointer;
+        padding: 18px;
+        width: 75%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    
+    .replacebutton {
+        background-color: #acabab;
+        color: #0064A4;
+        cursor: pointer;
+        padding: 0px;
+        width: 60%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+    
+    .previewbutton {
+        background-color: #ffffff;
+        color: #0064A4;
+        cursor: pointer;
+        padding: 13px;
+        width: 35%;
+        border: outset #0064A4;
+        text-align: left;
+        outline: none;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    
+    .savebutton {
+        background-color: #0064A4;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 15px;
+        width: 35%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    
+    .active,
+    .collapsible:hover {
+        background-color: #e8f3f8;
+    }
+    
+    .content {
+        padding: 0 18px;
+        display: active;
+        overflow: hidden;
+        background-color: #edf5fa;
+    }
 </style>
 
 
 <body>
-   <!-- navigation bar at the top of the page -->
-   <header class="navbar-top">
-      <div class="navbar-topleft">
-         <a href="https://www.ics.uci.edu/" target="_blank"><img src="images/ics_logo.png" class="ics_logo"></a>
-      </div>
-      <div class="navbar-topright">
-         <input class="navbar_search" type="text" placeholder="Search">
-      </div>
-      <!-- <a href="#" target="_blank"><img src="" class="notif_logo"></a>
+    <!-- navigation bar at the top of the page -->
+    <header class="navbar-top">
+        <div class="navbar-topleft">
+            <a href="https://www.ics.uci.edu/" target="_blank"><img src="images/ics_logo.png" class="ics_logo"></a>
+        </div>
+        <div class="navbar-topright">
+            <input class="navbar_search" type="text" placeholder="Search">
+        </div>
+        <!-- <a href="#" target="_blank"><img src="" class="notif_logo"></a>
       <a href="#" target="_blank"><img src="" class="profile_pic"></a> -->
-      
-   </header>
 
-   <!-- side bar -->
-   <div class="sidebar">
-      <nav id="sidebarMenu">
-         <ul> 
-            <li> <a class="nav-link" href="dashboard.html">Dashboard</a> </li>
-            <li> <a class="nav-link active" href="#">Projects</a> </li>
-            <li> <a class="nav-link" href="media.html">Media</a> </li>
-         </ul>
-         <li> <a class="setting-link" href="settings.html">Settings</a> </li>
-      </nav>
-   </div>
-   <!--mainbody kinda?-->
-   <main class="main-body">
-      <input class="title-box" type="text" placeholder="Title">
-      </div>
-      <p> </p>
+    </header>
 
-      
-      <button type="button" class="collapsible">Project Description</button>
-      <div class="content">
-         <input class="title-box" type="text" placeholder="Add Description">
-      </div>
+    <!-- side bar -->
+    <div class="sidebar">
+        <nav id="sidebarMenu">
+            <ul>
+                <li> <a class="nav-link" href="dashboard.html">Dashboard</a> </li>
+                <li> <a class="nav-link active" href="#">Projects</a> </li>
+                <li> <a class="nav-link" href="media.html">Media</a> </li>
+            </ul>
+            <li> <a class="setting-link" href="settings.html">Settings</a> </li>
+        </nav>
+    </div>
+    <!--mainbody kinda?-->
+    <main class="main-body">
+        <input class="title-box" type="text" placeholder="Title">
+        </div>
+        <p> </p>
 
-      <button type="button" class="collapsible">Course</button>
-      <div class="content">
-         <input class="title-box" type="text" placeholder="">
-      </div>
 
-      <button type="button" class="collapsible">Quarter/Year</button>
-      <div class="content">
-         <input class="title-box" type="text" placeholder="">
-      </div>
 
-      <button type="button" class="collapsible">Links</button>
-      <div class="content">
-         <input class="title-box" type="text" placeholder="">
-      </div>
-
-      
-   </main>
-   <!-- side bar2 -->
-   <div class="sidebar2">
-      <nav id="sidebarMenu">
-         <ul> 
-            <button type="button" class="previewbutton">👁 Preview</button>
-            <button type="button" class="savebutton">Save</button>
-            <p>Sponsor Name</p>
+        <button type="button" class="collapsible">Project Description</button>
+        <div class="content">
+            <input class="title-box" type="text" placeholder="Add Description">
+        </div>
+        <p> </p>
+        <button type="button" class="collapsible">Course</button>
+        <div class="content">
             <input class="title-box" type="text" placeholder="">
-            <button type="button" class="replacebutton">+ Sponsor</button>
-            <p>Team Members</p>
+        </div>
+        <p> </p>
+        <button type="button" class="collapsible">Quarter/Year</button>
+        <div class="content">
             <input class="title-box" type="text" placeholder="">
-            <p>Tags</p>
+        </div>
+        <p> </p>
+        <button type="button" class="collapsible">Links</button>
+        <div class="content">
             <input class="title-box" type="text" placeholder="">
-         </ul>
-      </nav>
-   </div>
+        </div>
+
+
+    </main>
+    <!-- side bar2 -->
+    <div class="sidebar2">
+        <nav id="sidebarMenu">
+            <ul>
+                <button type="button" class="previewbutton">👁 Preview</button>
+                <button type="button" class="savebutton">Save</button>
+                <p>Sponsor Name</p>
+                <input class="title-box" type="text" placeholder="">
+                <button type="button" class="replacebutton">+ Sponsor</button>
+                <p>Team Members</p>
+                <input class="title-box" type="text" placeholder="">
+                <p>Tags</p>
+                <input class="title-box" type="text" placeholder="">
+            </ul>
+        </nav>
+    </div>
 
 
 
 </body>
 <!-- https://www.w3schools.com/howto/howto_js_collapsible.asp-->
 <script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "none") {
-      content.style.display = "block";
-    } else {
-      content.style.display = "none";
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        });
     }
-  });
-}
-   </script>
+</script>
 
 </html>
