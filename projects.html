@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <title>191 for 191!</title>
 
 </head>
@@ -90,14 +91,31 @@
     <!-- side bar -->
     <div class="sidebar">
         <nav id="sidebarMenu">
-            <ul>
-                <li> <a class="nav-link" href="dashboard.html">Dashboard</a> </li>
-                <li> <a class="nav-link active" href="#">Projects</a> </li>
-                <li> <a class="nav-link" href="media.html">Media</a> </li>
+            <ul class="nav-list mb-auto">
+                <li> <a class="nav-link" href="dashboard.html">
+                    <img src="images/house.svg">
+                    Dashboard
+                    </a> 
+                </li>
+                <li> <a class="nav-link active" href="">
+                    <img src="images/folder.svg">
+                    Projects
+                    </a> 
+                </li>
+                <li> <a class="nav-link" href="media.html">
+                    <img src="images/image.svg">
+                    Media
+                    </a> 
+                </li>
             </ul>
-            <li> <a class="setting-link" href="settings.html">Settings</a> </li>
+            <hr>
+            <a class="setting-link" href="settings.html">
+                <img src="images/gear.svg">
+                Settings
+            </a> 
         </nav>
     </div>
+    
     <!--mainbody kinda?-->
     <main class="main-body">
         <input class="title-box" type="text" placeholder="Title">

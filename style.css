@@ -17,6 +17,19 @@ body {
     width: 25%;
     background-color: #1b3d6d;
     font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-bottom: 95%;
+    padding-right: 10%;
+    font-size: large;
+
 }
 
 .sidebar .nav-link.active {
@@ -26,10 +39,14 @@ body {
 
 .sidebar .nav-link {
     color: #ffffff;
+    
 }
 
 .sidebar .setting-link {
     color: #ffffff;
+    padding-left: 15%;
+    text-decoration: none;
+    font-size: large;
 }
 
 
@@ -38,6 +55,7 @@ body {
 .navbar-top {
     display: flex;
     background-color: #ffffff;
+    height:60px;
 }
 
 .navbar-topleft {
@@ -45,12 +63,9 @@ body {
     padding-bottom: 5px;
     background-color: #0064a4;
     width: fit-content;
-    height: 50px;
+    height: 60px;
     border-bottom: outset;
 }
-
-
-/* ics logo */
 
 .ics_logo {
     width: 300px;
@@ -68,7 +83,6 @@ body {
 }
 
 
-/* TO DO: FIGURE OUT HOW TO MOVE SEARCH BAR TO THE RIGHT */
 
 .navbar_search {
     position: fixed;
