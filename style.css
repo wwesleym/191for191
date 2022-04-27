@@ -65,6 +65,7 @@ body {
     width: fit-content;
     height: 60px;
     border-bottom: outset;
+    position: fixed;
 }
 
 .ics_logo {
@@ -75,13 +76,16 @@ body {
 
 .navbar-topright {
     width: 100%;
+    height: 60px;
     padding: 15px 15px;
     border-bottom: inset;
     display: inline-block;
     right: 0px;
+    position: fixed;
+    
+    /* background-color: #ffffff; */
     /* margin-left: auto; */
 }
-
 
 
 .navbar_search {
@@ -102,10 +106,81 @@ body {
     background-color: #f6f9fa;
 }
 
+.previewbutton {
+    background-color: #ffffff;
+    color: #0064A4;
+    cursor: pointer;
+    padding: 13px;
+    width: 35%;
+    border: outset #0064A4;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.savebutton {
+    background-color: #0064A4;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 15px;
+    width: 35%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
 
 /* MAIN BODY */
 
 .main-body {
     margin-left: 28%;
     margin-top: 15px;
+    margin-right: 22%;
+}
+
+.collapsible {
+    background-color: #edf5fa;
+    color: #1a609e;
+    cursor: pointer;
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.replacebutton {
+    background-color: #acabab;
+    color: #0064A4;
+    cursor: pointer;
+    padding: 0px;
+    width: 60%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #e8f3f8;
+}
+
+.content {
+    padding: 0 18px;
+    display: active;
+    overflow: hidden;
+    background-color: #edf5fa;
+}
+
+/* project description */
+.form-control {
+    height: 125px;
 }
