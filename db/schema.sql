@@ -1,37 +1,37 @@
 CREATE SCHEMA IF NOT EXISTS db;
 
-CREATE TABLE db.tag(
+CREATE TABLE projects.tag(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	tag VARCHAR(32) NOT NULL
+	name VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE db.project_tag(
+CREATE TABLE projects.project_tag(
 	project_id INT,
 	tag_id INT,
 	PRIMARY KEY (project_id, tag_id),
-	FOREIGN KEY (project_id) REFERENCES db.tag (id)
+	FOREIGN KEY (project_id) REFERENCES projects.project (id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (tag_id) REFERENCES db.tag (id)
+	FOREIGN KEY (tag_id) REFERENCES projects.tag (id)
 		on UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE db.sponsor(
+CREATE TABLE projects.sponsor(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(50) NOT NULL,
 	website VARCHAR(50)
 );
 
-CREATE TABLE db.sponsor_member(
+CREATE TABLE projects.sponsor_member(
 	sponsor_id INT,
 	person_id INT,
 	PRIMARY KEY (sponsor_id, person_id),
-	FOREIGN KEY (sponsor_id) REFERENCES db.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (person_id) REFERENCES db.person (id)
+	FOREIGN KEY (person_id) REFERENCES projects.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE db.person(
+CREATE TABLE projects.person(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	name_first VARCHAR(50) NOT NULL,
 	name_last VARCHAR(50) NOT NULL,
@@ -53,22 +53,22 @@ CREATE TABLE db.person(
 	password VARCHAR(30)
 );
 
-CREATE TABLE db.category(
+CREATE TABLE projects.category(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	category VARCHAR(50) NOT NULL
+	name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE db.sponsor_category(
+CREATE TABLE projects.sponsor_category(
 	sponsor_id INT,
 	category_id INT,
 	PRIMARY KEY (sponsor_id, category_id),
-	FOREIGN KEY (sponsor_id) REFERENCES db.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (category_id) REFERENCES db.category (id)
+	FOREIGN KEY (category_id) REFERENCES projects.category (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE db.project(
+CREATE TABLE projects.project(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	sponsor_id INT NOT NULL,
 	project_description VARCHAR(500) NOT NULL,
@@ -76,13 +76,13 @@ CREATE TABLE db.project(
 	image VARCHAR(1024) NOT NULL,
 	state ENUM("COMPLETED", "IN_PROGRESS", "NOT_STARTED"),
 	course_instance_id INT,
-	FOREIGN KEY (sponsor_id) REFERENCES db.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (course_instance_id) REFERENCES db.course_instance (id)
+	FOREIGN KEY (course_instance_id) REFERENCES projects.course_instance (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE db.course_instance(
+CREATE TABLE projects.course_instance(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(100) NOT NULL,
@@ -90,25 +90,25 @@ CREATE TABLE db.course_instance(
 	professor_id INT NOT NULL,
 	term ENUM("WINTER", "SPRING", "SUMMER", "FALL"),
 	year INT NOT NULL,
-	FOREIGN KEY (professor_id) REFERENCES db.person (id)
+	FOREIGN KEY (professor_id) REFERENCES projects.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE db.team(
+CREATE TABLE projects.team(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	team_name VARCHAR(50),
+	name VARCHAR(50),
 	size INT
 );
 
-CREATE TABLE db.matching(
+CREATE TABLE projects.matching(
 	course_instance_id INT,
 	project_id INT,
 	team_id INT,
 	PRIMARY KEY (course_instance_id, project_id, team_id)
-	FOREIGN KEY (course_instance_id) REFERENCES db.course_instance (id)
+	FOREIGN KEY (course_instance_id) REFERENCES projects.course_instance (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (project_id) REFERENCES db.project (id)
+	FOREIGN KEY (project_id) REFERENCES projects.project (id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (team_id) REFERENCES db.team (id)
+	FOREIGN KEY (team_id) REFERENCES projects.team (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
