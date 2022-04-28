@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS db;
 
 CREATE TABLE projects.tag(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(32) NOT NULL
 );
 
@@ -54,7 +54,7 @@ CREATE TABLE projects.person(
 );
 
 CREATE TABLE projects.category(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL
 );
 
@@ -83,12 +83,11 @@ CREATE TABLE projects.project(
 );
 
 CREATE TABLE projects.course_instance(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(100) NOT NULL,
-	uci_course_id INT NOT NULL UNIQUE,
 	professor_id INT NOT NULL,
-	term ENUM("WINTER", "SPRING", "SUMMER", "FALL"),
+	term ENUM("WINTER", "SPRING", "SUMMER", "FALL") NOT NULL,
 	year INT NOT NULL,
 	FOREIGN KEY (professor_id) REFERENCES projects.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
