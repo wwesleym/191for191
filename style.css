@@ -29,6 +29,7 @@ body {
     padding-bottom: 95%;
     padding-right: 10%;
     font-size: large;
+
 }
 
 .sidebar .nav-link.active {
@@ -38,18 +39,22 @@ body {
 
 .sidebar .nav-link {
     color: #ffffff;
+    
 }
 
 .sidebar .setting-link.active {
-    position: fixed;
-    top: 611px;
-    left: 41px;
+    position:fixed;
+    top: 56.574%; 
+    left: 2.1354%;
+    /*left: 25px;*/
     color: #000;
     background-color: #eeec67;
+    
     padding-left: 17px;
     padding-right: 210px;
     padding-top: 7.75px;
     padding-bottom: 7.75px;
+    
 }
 
 .sidebar .setting-link {
@@ -57,6 +62,7 @@ body {
     padding-left: 15%;
     text-decoration: none;
     font-size: large;
+
 }
 
 
@@ -65,7 +71,7 @@ body {
 .navbar-top {
     display: flex;
     background-color: #ffffff;
-    height: 60px;
+    height:60px;
 }
 
 .navbar-topleft {
@@ -92,9 +98,11 @@ body {
     display: inline-block;
     right: 0px;
     position: fixed;
+    
     /* background-color: #ffffff; */
     /* margin-left: auto; */
 }
+
 
 .navbar_search {
     position: fixed;
@@ -146,7 +154,7 @@ body {
 .main-body {
     margin-left: 28%;
     margin-top: 15px;
-    margin-right: 22%;
+    margin-right: 5%;
 }
 
 .collapsible {
@@ -165,7 +173,7 @@ body {
 }
 
 .replacebutton {
-    background-color: #f6f9fa;
+    background-color: #edf5fa;
     color: #0064A4;
     cursor: pointer;
     padding: 0px;
@@ -181,6 +189,7 @@ body {
     background-color: #e8f3f8;
 }
 
+
 .content {
     padding: 18px;
     display: active;
@@ -189,65 +198,22 @@ body {
 }
 
 
-/* project description */
 
+/* project description */
 .form-control {
     height: 125px;
 }
 
-
 /*else*/
-.createproject-course-dropdown {
+.dropdown {
     background-color: #e8f3f8;
     z-index: 12;
     padding: 18px;
     
 }
-
-/* PROJECTS.HTML */
-
-.addprojectbutton {
-    position:absolute;
-    right: 70px;
-    background-color: #0064A4;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 10px;
-    /* width: 35%; */
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 14px;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.projects-body-filters {
-    font-size: 20px;
-}
-
-.projects-dropdown {
-    padding-left: 50px;
-}
-
-.submitfilterbutton {
-    position:absolute;
-    right: 200px;
-    background-color: #0064A4;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 10px;
-    /* width: 35%; */
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 14px;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.dropdown {
-    background-color: #e8f3f8;
-    z-index: 12;
-    padding: 18px;
+ /*https://www.w3schools.com/html/html_youtube.asp*/
+.videoLink{
+    display:inline-block;
+    padding: 15px;
+    /*z-index: -1;*/
 }
