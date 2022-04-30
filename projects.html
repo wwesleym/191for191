@@ -53,84 +53,66 @@
 
     <!-- mainbody -->
     <main class="main-body">
-        <input class="title-box" type="text" placeholder="Title">
+        <div style="display: flex; flex-direction: right;">
+            <h4>Projects</h4>
+            <a href="createproject.html" class="addprojectbutton" role="button">
+                + Add Project
+            </a>
         </div>
-        <p> </p>
 
-        <button type="button" class="collapsible">Project Description</button>
-        <div class="content">
-            <textarea class="form-control" type="text" placeholder="Add Description"></textarea>
+        <div style="display: flex; flex-direction: right; padding-top: 30px;">
+            <div class="projects-body-filters">Filters:</div>
+
+            <div class="projects-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    Department
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Informatics</a></li>
+                    <li><a class="dropdown-item" href="#">Computer Science</a></li>
+                    <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+                </ul>
+            </div>
+
+            <div class="projects-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    Quarter/Year
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Spring 2022</a></li>
+                    <li><a class="dropdown-item" href="#">Winter 2022</a></li>
+                    <li><a class="dropdown-item" href="#">Fall 2021</a></li>
+                    <li><a class="dropdown-item" href="#">Spring 2021</a></li>
+                    <li><a class="dropdown-item" href="#">Winter 2021</a></li>
+                    <li><a class="dropdown-item" href="#">Fall 2020</a></li>
+                </ul>
+            </div>
+
+            <div class="projects-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    Course
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">INF 117</a></li>
+                    <li><a class="dropdown-item" href="#">INF 191</a></li>
+                    <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+                </ul>
+            </div>
+
+            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true">
+                Submit
+            </a>
         </div>
-        <p> </p>
 
-        <button type="button" class="collapsible">Course</button>
-
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Course
-                </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">INF 117</a></li>
-                <li><a class="dropdown-item" href="#">INF 191</a></li>
-                <!-- <li><a class="dropdown-item" href="#"></a></li> -->
-            </ul>
-        </div>
-        </div>
-        <p> </p>
-
-        <button type="button" class="collapsible">Quarter/Year</button>
-        <div class="content">
-            <input class="title-box" type="text" placeholder="">
-        </div>
-        <p> </p>
-
-        <button type="button" class="collapsible">Links</button>
-        <div class="content">
-            <input class="title-box" type="text" placeholder="">
+        <div style="display: flex; flex-direction: right; padding-top: 30px;">
+            <p>project 1</p> <!-- embedded link to project-->
         </div>
     </main>
 
-    <!-- side bar2 -->
-    <div class="sidebar2">
-        <nav id="sidebarMenu">
-            <ul>
-                <button type="button" class="previewbutton"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                      </svg>
-                    Preview</button>
-                <button type="button" class="savebutton">Save</button>
-                <p>Sponsor Name</p>
-                <input class="title-box" type="text" placeholder="">
-                <button type="button" class="replacebutton">+ Sponsor</button>
-                <p>Team Members</p>
-                <input class="title-box" type="text" placeholder="">
-                <p>Tags</p>
-                <input class="title-box" type="text" placeholder="">
-            </ul>
-        </nav>
-    </div>
+        
 
 
 
 </body>
-<!-- https://www.w3schools.com/howto/howto_js_collapsible.asp-->
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "none") {
-                content.style.display = "block";
-            } else {
-                content.style.display = "none";
-            }
-        });
-    }
-</script>
 
 </html>

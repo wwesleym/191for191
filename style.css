@@ -202,9 +202,51 @@ body {
 }
 
 /*else*/
-.dropdown {
+.createproject-course-dropdown {
     background-color: #e8f3f8;
     z-index: 12;
     padding: 18px;
     
+}
+
+/* PROJECTS.HTML */
+
+.addprojectbutton {
+    position:absolute;
+    right: 70px;
+    background-color: #0064A4;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    /* width: 35%; */
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.projects-body-filters {
+    font-size: 20px;
+}
+
+.projects-dropdown {
+    padding-left: 50px;
+}
+
+.submitfilterbutton {
+    position:absolute;
+    right: 200px;
+    background-color: #0064A4;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    /* width: 35%; */
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
 }
