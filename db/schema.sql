@@ -16,7 +16,7 @@ CREATE TABLE projects.project_tag(
 );
 
 CREATE TABLE projects.sponsor(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
 	website VARCHAR(50)
 );
@@ -32,8 +32,9 @@ CREATE TABLE projects.sponsor_member(
 );
 
 CREATE TABLE projects.person(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	name_first VARCHAR(50) NOT NULL,
+	name_middle VARCHAR(50),
 	name_last VARCHAR(50) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	profile_pic VARCHAR(500),
@@ -45,10 +46,10 @@ CREATE TABLE projects.person(
 	address_city VARCHAR(30),
 	address_street VARCHAR(30),
 	phone VARCHAR(15),
-	is_professor TINYINT(1),
-	is_student TINYINT(1),
-	is_sponsor TINYINT(1),
-	is_admin TINYINT(1),
+	is_professor BOOLEAN,
+	is_student BOOLEAN,
+	is_sponsor BOOLEAN,
+	is_admin BOOLEAN,
 	uci_netid VARCHAR(20),
 	password VARCHAR(30)
 );
@@ -69,11 +70,11 @@ CREATE TABLE projects.sponsor_category(
 );
 
 CREATE TABLE projects.project(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	sponsor_id INT NOT NULL,
 	project_description VARCHAR(500) NOT NULL,
 	pitch_video VARCHAR(1024) NOT NULL,
-	image VARCHAR(1024) NOT NULL,
+	image VARCHAR(1024),
 	state ENUM("COMPLETED", "IN_PROGRESS", "NOT_STARTED"),
 	course_instance_id INT,
 	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
@@ -94,7 +95,7 @@ CREATE TABLE projects.course_instance(
 );
 
 CREATE TABLE projects.team(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50),
 	size INT
 );
