@@ -104,7 +104,7 @@ CREATE TABLE projects.matching(
 	course_instance_id INT,
 	project_id INT,
 	team_id INT,
-	PRIMARY KEY (course_instance_id, project_id, team_id)
+	PRIMARY KEY (course_instance_id, project_id, team_id),
 	FOREIGN KEY (course_instance_id) REFERENCES projects.course_instance (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (project_id) REFERENCES projects.project (id)
