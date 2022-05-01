@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS db;
+CREATE SCHEMA IF NOT EXISTS projects;
 
 CREATE TABLE projects.tag(
 	id INT NOT NULL PRIMARY KEY,
@@ -75,7 +75,7 @@ CREATE TABLE projects.project(
 	project_description VARCHAR(500) NOT NULL,
 	pitch_video VARCHAR(1024) NOT NULL,
 	image VARCHAR(1024),
-	state ENUM("COMPLETED", "IN_PROGRESS", "NOT_STARTED"),
+	state ENUM('COMPLETED', 'IN_PROGRESS', 'NOT_STARTED'),
 	course_instance_id INT,
 	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -88,7 +88,7 @@ CREATE TABLE projects.course_instance(
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(100) NOT NULL,
 	professor_id INT NOT NULL,
-	term ENUM("WINTER", "SPRING", "SUMMER", "FALL") NOT NULL,
+	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
 	year INT NOT NULL,
 	FOREIGN KEY (professor_id) REFERENCES projects.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
