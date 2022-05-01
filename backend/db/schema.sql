@@ -71,6 +71,8 @@ CREATE TABLE projects.sponsor_category(
 
 CREATE TABLE projects.project(
 	id INT NOT NULL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	team_size INT NOT NULL,
 	sponsor_id INT NOT NULL,
 	project_description VARCHAR(500) NOT NULL,
 	pitch_video VARCHAR(1024) NOT NULL,
@@ -91,24 +93,5 @@ CREATE TABLE projects.course_instance(
 	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
 	year INT NOT NULL,
 	FOREIGN KEY (professor_id) REFERENCES projects.person (id)
-		ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE projects.team(
-	id INT NOT NULL PRIMARY KEY,
-	name VARCHAR(50),
-	size INT
-);
-
-CREATE TABLE projects.matching(
-	course_instance_id INT,
-	project_id INT,
-	team_id INT,
-	PRIMARY KEY (course_instance_id, project_id, team_id),
-	FOREIGN KEY (course_instance_id) REFERENCES projects.course_instance (id)
-		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (project_id) REFERENCES projects.project (id)
-		ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (team_id) REFERENCES projects.team (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
