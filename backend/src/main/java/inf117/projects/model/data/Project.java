@@ -1,7 +1,7 @@
 package inf117.projects.model.data;
 
 public class Project {
-    private int projectId;
+    private int id;
     private String name;
     private int teamSize;
     private String sponsorName;
@@ -11,12 +11,12 @@ public class Project {
     private ProjectState state;
     private int courseId;
 
-    public int getProjectId() {
-        return projectId;
+    public int getId() {
+        return id;
     }
 
-    public Project setProjectId(int projectId) {
-        this.projectId = projectId;
+    public Project setId(int id) {
+        this.id = id;
         return this;
     }
 
