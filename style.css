@@ -368,3 +368,7 @@ body {
     background: #1abc9c;
     color: white !important
 }
+
+form {
+    background-color: #edf5fa;
+}

@@ -1,84 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <link rel="stylesheet" href="style.css">
-   <link href="css/bootstrap.min.css" rel="stylesheet">
-   <title>191 for 191!</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>191 for 191!</title>
 </head>
+
 <body>
-   <!-- navigation bar at the top of the page -->
-   <header class="navbar-top">
-      <div class="navbar-topleft">
-         <a href="https://www.ics.uci.edu/" target="_blank"><img src="images/ics_logo.png" class="ics_logo"></a>
-      </div>
-      <div class="navbar-topright">
-         <input class="navbar_search" type="text" placeholder="Search">
-      </div>
-      <!-- <a href="#" target="_blank"><img src="" class="notif_logo"></a>
+    <!-- navigation bar at the top of the page -->
+    <header class="navbar-top">
+        <div class="navbar-topleft">
+            <a href="https://www.ics.uci.edu/" target="_blank"><img src="images/ics_logo.png" class="ics_logo"></a>
+        </div>
+        <div class="navbar-topright">
+            <input class="navbar_search" type="text" placeholder="Search">
+        </div>
+        <!-- <a href="#" target="_blank"><img src="" class="notif_logo"></a>
       <a href="#" target="_blank"><img src="" class="profile_pic"></a> -->
-      
-   </header>
 
-   <!-- side bar -->
-   <div class="sidebar">
-      <nav id="sidebarMenu">
-          <ul class="nav-list mb-auto">
-              <li> <a class="nav-link active" href="">
-                  <img src="images/house.svg">
-                  Dashboard
-                  </a> 
-              </li>
-              <li> <a class="nav-link" href="projects.html">
-                  <img src="images/folder.svg">
-                  Projects
-                  </a> 
-              </li>
-              <li> <a class="nav-link" href="media.html">
-                  <img src="images/image.svg">
-                  Media
-                  </a> 
-              </li>
-          </ul>
-          <hr>
-          <a class="setting-link" href="settings.html">
-              <img src="images/gear.svg">
-              Settings
-          </a> 
-      </nav>
-  </div>
+    </header>
 
-   <main class="main-body">
-       <div class="dashboard-banner">
+    <!-- side bar -->
+    <div class="sidebar">
+        <nav id="sidebarMenu">
+            <ul class="nav-list mb-auto">
+                <li>
+                    <a class="nav-link active" href="">
+                        <img src="images/house.svg"> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="projects.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                  </svg> Projects
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="media.html">
+                        <img src="images/image.svg"> Media
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <a class="setting-link" href="settings.html">
+                <img src="images/gear.svg"> Settings
+            </a>
+        </nav>
+    </div>
+
+    <main class="main-body">
+        <div class="dashboard-banner">
             <h5>Hi Full Name!</h5>
             <h4>Welcome to 191 for 191</h4>
             <h6>
-                All your projects activity will be displayed here. 
-                You can head over to your projects page to add/remove projects for your courses.
+                All your projects activity will be displayed here. You can head over to your projects page to add/remove projects for your courses.
             </h6>
-       </div>
-       <br><br>
-       <h6>My current courses - Spring 2022</h6>
-       <br>
-       <p>course 1</p>
+        </div>
+        <br><br>
+        <h6>My current courses - Spring 2022</h6>
+        <br>
+        <p>course 1</p>
     </main>
 
-   <!-- side bar2 -->
-   <div class="dashboard-sidebar2">
+    <!-- side bar2 -->
+    <div class="dashboard-sidebar2">
         <div class="dashboard-calendar">
             <p style="padding-top: 10px; font-size: 20px;">Calendar</p>
-            <div class="month">      
+            <div class="month">
                 <ul>
-                  <li class="prev">&#10094;</li>
-                  <li class="next">&#10095;</li>
-                  <li>
-                    May<br>
-                    2022
-                  </li>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li>
+                        May<br> 2022
+                    </li>
                 </ul>
-              </div>
-              
-              <ul class="weekdays">
+            </div>
+
+            <ul class="weekdays">
                 <li>Mo</li>
                 <li>Tu</li>
                 <li>We</li>
@@ -86,9 +88,9 @@
                 <li>Fr</li>
                 <li>Sa</li>
                 <li>Su</li>
-              </ul>
-              
-              <ul class="days">  
+            </ul>
+
+            <ul class="days">
                 <li>1</li>
                 <li><span class="active">2</span></li>
                 <li>3</li>
@@ -120,13 +122,14 @@
                 <li>29</li>
                 <li>30</li>
                 <li>31</li>
-              </ul>
+            </ul>
         </div>
 
         <div class="dashboard-pastactivity">
             <p style="padding-top: 70px; font-size: 20px;">My Past Activity</p>
         </div>
-   </div>
+    </div>
 
 </body>
+
 </html>
