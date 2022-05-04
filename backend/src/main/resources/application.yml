@@ -2,13 +2,14 @@ spring:
   application:
     name: ProjectService
   datasource:
-    url: jdbc:mysql://db.matthewbietz.org:3306
+#    url: jdbc:mysql://db.matthewbietz.org:3306
+    url: jdbc:mysql://localhost:3306
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
 server:
   address: 0.0.0.0
-  port: 8082
+  port: 1096
   error:
     include-exception: true
     include-message: always
