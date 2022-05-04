@@ -24,8 +24,8 @@ public class ProjectsController {
             @RequestParam String name)
     {
         Project project = this.repo.projectByProjectName(name);
-        ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
-        response.setProject(project);
+        ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel()
+                .setProject(project);
 
         return response;
     }
@@ -35,8 +35,8 @@ public class ProjectsController {
             @RequestParam Integer Id)
     {
         Project project = this.repo.projectByProjectId(Id);
-        ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
-        response.setProject(project);
+        ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel()
+                .setProject(project);
 
         return response;
     }
@@ -46,8 +46,8 @@ public class ProjectsController {
             @RequestParam String name)
     {
         Sponsor sponsor = this.repo.sponsorBySponsorName(name);
-        SponsorSearchResponseModel response = new SponsorSearchResponseModel();
-        response.set(sponsor);
+        SponsorSearchResponseModel response = new SponsorSearchResponseModel()
+                .setSponsor(sponsor);
 
         return response;
     }
@@ -57,8 +57,8 @@ public class ProjectsController {
             @RequestParam Integer Id)
     {
         Sponsor sponsor = this.repo.sponsorBySponsorId(Id);
-        SponsorSearchResponseModel response = new SponsorSearchResponseModel();
-        response.set(sponsor);
+        SponsorSearchResponseModel response = new SponsorSearchResponseModel()
+                .setSponsor(sponsor);
 
         return response;
     }
