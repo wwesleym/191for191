@@ -12,7 +12,9 @@ public class SponsorSearchResponseModel extends ResponseModel<SponsorSearchRespo
     public Sponsor getSponsor() {
         return sponsor;
     }
-    public void setSponsor(Sponsor sponsor) {
+
+    public SponsorSearchResponseModel setSponsor(Sponsor sponsor) {
         this.sponsor = sponsor;
+        return this;
     }
 }

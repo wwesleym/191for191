@@ -11,7 +11,9 @@ public class ProjectNameSearchResponseModel extends ResponseModel<ProjectNameSea
     public Project getProject() {
         return project;
     }
-    public void setProject(Project project) {
+
+    public ProjectNameSearchResponseModel setProject(Project project) {
         this.project = project;
+        return this;
     }
 }
