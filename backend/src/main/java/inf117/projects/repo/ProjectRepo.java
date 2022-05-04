@@ -1,8 +1,8 @@
 package inf117.projects.repo;
 
-import inf117.projects.model.data.Project;
-import inf117.projects.model.data.ProjectState;
-import inf117.projects.model.data.Sponsor;
+import inf117.projects.repo.entity.Project;
+import inf117.projects.repo.entity.type.ProjectState;
+import inf117.projects.repo.entity.Sponsor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.sql.Types;
-import java.util.List;
 
 @Component
 public class ProjectRepo {
