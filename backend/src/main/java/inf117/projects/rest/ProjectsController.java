@@ -34,7 +34,7 @@ public class ProjectsController {
     ProjectNameSearchResponseModel ProjectSearchById(
             @RequestParam Integer Id)
     {
-        Project project = this.repo.projectByProjectName(Id);
+        Project project = this.repo.projectByProjectId(Id);
         ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
         response.setProject(project);
 
@@ -45,7 +45,7 @@ public class ProjectsController {
     SponsorSearchResponseModel SponsorSearchByName(
             @RequestParam String name)
     {
-        Sponsor sponsor = this.repo.selectSponsor(name);
+        Sponsor sponsor = this.repo.sponsorBySponsorName(name);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
         response.set(sponsor);
 
@@ -56,7 +56,7 @@ public class ProjectsController {
     SponsorSearchResponseModel SponsorSearchById(
             @RequestParam Integer Id)
     {
-        Sponsor sponsor = this.repo.selectSponsor(Id);
+        Sponsor sponsor = this.repo.sponsorBySponsorId(Id);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
         response.set(sponsor);
 
