@@ -64,7 +64,10 @@
 
     <!-- mainbody -->
     <main class="main-body">
-        <div class="title-box-create-project">
+        <fieldset>
+            <form name="CreateProj" class="needs-validation" method="post" action="createproject.php">
+            <p> </p>
+            <div class="title-box-create-project">
             <input class="title-box" type="text" placeholder="Title" size="70">
         </div>
         </div>
@@ -72,7 +75,8 @@
 
         <button type="button" class="collapsible">Project Description</button>
         <div class="content">
-            <textarea class="form-control" type="text" placeholder="Add Description"></textarea>
+
+            <textarea name="ProjectDesc" class="form-control" id="ProjectDesc" type="text" placeholder="Add Description"></textarea>
         </div>
         <p> </p>
 
@@ -83,8 +87,8 @@
                 Select Course
                 </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">INF 117</a></li>
-                <li><a class="dropdown-item" href="#">INF 191</a></li>
+                <li><a name="Inf117" id="CourseName" class="dropdown-item" href="#">INF 117</a></li>
+                <li><a name="Inf191" id="CourseName" class="dropdown-item" href="#">INF 191</a></li>
                 <!-- <li><a class="dropdown-item" href="#"></a></li> -->
             </ul>
         </div>
@@ -97,8 +101,8 @@
                 Select Quarter/Year
                 </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Winter 2022</a></li>
-                <li><a class="dropdown-item" href="#">Fall 2021</a></li>
+                <li><a name="Win22" id="QuartYear" class="dropdown-item" href="#">Winter 2022</a></li>
+                <li><a name="Fall21" id="QuartYear" class="dropdown-item" href="#">Fall 2021</a></li>
                 <!-- <li><a class="dropdown-item" href="#"></a></li> -->
             </ul>
         </div>
@@ -107,8 +111,9 @@
 
         <button type="button" class="collapsible">Links</button>
         <div class="content">
-            <input class="title-box" type="text" placeholder="">
+            <input name="Linkss" id="Linkss" class="title-box" type="text" placeholder="">
         </div>
+
     </main>
 
     <!-- side bar2 -->
@@ -121,20 +126,27 @@
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                       </svg>
                     Preview</button>
-                <button type="button" class="savebutton">Save</button>
+                <!--<button type="button" class="savebutton">Save</button> -->
+                <!-- <input type="submit" name="Submit" id="Submit" value="Click me to Contact"  class="btn btn-primary btn-lg btn-block"> -->
+                <input type="submit" name="Submit" id="Submit" value="Save"  class="savebutton">
                 <p></p>
                 <p>Sponsor Name </p>
-                <input class="title-box" type="text" placeholder="">
-                <button type="button" class="replacebutton">+ Sponsor</button>
+                <input name="SponsorName" id="SponsorName" class="title-box" type="text" placeholder="">
+                <a class="nav-link" href="addsponsor.php">
+                    <button type="button" class="replacebutton">+ Sponsor</button></a>
+                
                 <p></p>
                 <p>Team Members</p>
-                <input class="title-box" type="text" placeholder="">
+                <input name="TeamMem" id="TeamMem" class="title-box" type="text" placeholder="">
                 <p></p>
                 <p>Tags</p>
-                <input class="title-box" type="text" placeholder="">
+                <input name="ProjTags" id="ProjTags" class="title-box" type="text" placeholder="">
             </ul>
         </nav>
     </div>
+
+</form>
+</fieldset>
 
 
 
