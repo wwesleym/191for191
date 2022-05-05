@@ -23,6 +23,8 @@ public enum ProjectState {
         }
 
         switch (state.toUpperCase(Locale.ROOT).replace('_', ' ')) {
+            case "COMPLETED":
+                return COMPLETED;
             case "IN PROGRESS":
                 return IN_PROGRESS;
             case "NOT STARTED":
