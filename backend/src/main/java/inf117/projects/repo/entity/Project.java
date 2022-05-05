@@ -1,4 +1,6 @@
-package inf117.projects.model.data;
+package inf117.projects.repo.entity;
+
+import inf117.projects.repo.entity.type.ProjectState;
 
 public class Project {
     private int id;

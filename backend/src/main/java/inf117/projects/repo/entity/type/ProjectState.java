@@ -1,4 +1,4 @@
-package inf117.projects.model.data;
+package inf117.projects.repo.entity.type;
 
 import java.util.Locale;
 

@@ -1,8 +1,8 @@
 package inf117.projects.repo;
 
-import inf117.projects.model.data.Project;
-import inf117.projects.model.data.ProjectState;
-import inf117.projects.model.data.Sponsor;
+import inf117.projects.repo.entity.Project;
+import inf117.projects.repo.entity.type.ProjectState;
+import inf117.projects.repo.entity.Sponsor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.sql.Types;
-import java.util.List;
 
 @Component
 public class ProjectRepo {
@@ -46,11 +45,32 @@ public class ProjectRepo {
         );
     }
 
+    public Project projectByProjectId(Integer id) {
+        return this.template.queryForObject(
+                "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+                        "FROM projects.project p " +
+                        "JOIN projects.sponsor s on s.id = p.sponsor_id " +
+                        "WHERE p.name = :id ",
+                new MapSqlParameterSource()
+                        .addValue("id", id, Types.INTEGER),
+                (rs, rowNum) -> new Project()
+                        .setId(rs.getInt("p.id"))
+                        .setName(rs.getString("p.name"))
+                        .setTeamSize(rs.getInt("p.team_size"))
+                        .setSponsorName(rs.getString("s.name"))
+                        .setDescription(rs.getString("p.project_description"))
+                        .setVideo(rs.getString("p.pitch_video"))
+                        .setImage(rs.getString("p.image"))
+                        .setState(ProjectState.fromString(rs.getString("p.state")))
+                        .setCourseId(rs.getInt("p.course_instance_id"))
+        );
+    }
+
     public void insertProject(Project project) {
         // Check if sponsor name in database
         Sponsor sponsor;
         if (project.getSponsorName() != null) {
-            sponsor = selectSponsor(project.getSponsorName());
+            sponsor = sponsorBySponsorName(project.getSponsorName());
         } else {
             sponsor = null;
         }
@@ -85,7 +105,7 @@ public class ProjectRepo {
 
     }
 
-    public Sponsor selectSponsor(String name) {
+    public Sponsor sponsorBySponsorName(String name) {
         try {
             return this.template.queryForObject(
                     "SELECT s.id, s.name " +
@@ -93,6 +113,25 @@ public class ProjectRepo {
                             "WHERE s.name LIKE :name ",
                     new MapSqlParameterSource()
                             .addValue("name", '%'+name+'%', Types.VARCHAR),
+                    (rs, rowNum) ->
+                            new Sponsor()
+                                    .setId(rs.getInt("s.id"))
+                                    .setName(rs.getString("s.name"))
+                                    .setWebsite(rs.getString("s.website"))
+            );
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    public Sponsor sponsorBySponsorId(Integer id) {
+        try {
+            return this.template.queryForObject(
+                    "SELECT s.id, s.name " +
+                            "FROM projects.sponsor s " +
+                            "WHERE s.name = :id ",
+                    new MapSqlParameterSource()
+                            .addValue("id", id, Types.INTEGER),
                     (rs, rowNum) ->
                             new Sponsor()
                                     .setId(rs.getInt("s.id"))
