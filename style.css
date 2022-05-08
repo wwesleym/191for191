@@ -201,14 +201,13 @@ body {
 }
 
 
-/* project description */
+/* create project - project description */
 
 .form-control {
     height: 125px;
 }
 
-
-/*else*/
+/* create project - course & quarter/year dropdown */
 
 .createproject-course-dropdown {
     background-color: #e8f3f8;
@@ -216,6 +215,11 @@ body {
     padding: 18px;
 }
 
+.createproject-qy-dropdown {
+    background-color: #e8f3f8;
+    z-index: 12;
+    padding: 18px;
+}
 
 /* PROJECTS.HTML */
 

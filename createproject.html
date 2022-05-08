@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <title>191 for 191!</title>
 
 </head>
@@ -65,17 +66,16 @@
     <!-- mainbody -->
     <main class="main-body">
         <fieldset>
-            <form name="CreateProj" class="needs-validation" method="post" action="createproject.php">
+            <!-- <form name="CreateProj" class="needs-validation" method="post" action="createproject.php"> -->
             <p> </p>
             <div class="title-box-create-project">
-            <input class="title-box" type="text" placeholder="Title" size="70">
+            <input class="title-box" type="text" placeholder="Title" id="titleInput" size="70">
         </div>
         </div>
         <p> </p>
 
         <button type="button" class="collapsible">Project Description</button>
         <div class="content">
-
             <textarea name="ProjectDesc" class="form-control" id="ProjectDesc" type="text" placeholder="Add Description"></textarea>
         </div>
         <p> </p>
@@ -84,11 +84,11 @@
 
         <div class="createproject-course-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Course
-                </button>
+                <span id="selectedCourse">Select Course</span>
+            </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a name="Inf117" id="CourseName" class="dropdown-item" href="#">INF 117</a></li>
-                <li><a name="Inf191" id="CourseName" class="dropdown-item" href="#">INF 191</a></li>
+                <li><a name="Inf117" id="CourseName" class="dropdown-item">INF 117</a></li>
+                <li><a name="Inf191" id="CourseName" class="dropdown-item">INF 191</a></li>
                 <!-- <li><a class="dropdown-item" href="#"></a></li> -->
             </ul>
         </div>
@@ -96,14 +96,17 @@
         <p> </p>
 
         <button type="button" class="collapsible">Quarter/Year</button>
-        <div class="createproject-course-dropdown">
+        <div class="createproject-qy-dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Quarter/Year
+                <span id="selectedQY">Select Quarter/Year</span> 
                 </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a name="Win22" id="QuartYear" class="dropdown-item" href="#">Winter 2022</a></li>
-                <li><a name="Fall21" id="QuartYear" class="dropdown-item" href="#">Fall 2021</a></li>
-                <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+            <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1">
+                <li><a name="Spr22" id="QuartYear" class="dropdown-item">Spring 2022</a></li>
+                <li><a name="Win22" id="QuartYear" class="dropdown-item">Winter 2022</a></li>
+                <li><a name="Fall21" id="QuartYear" class="dropdown-item">Fall 2021</a></li>
+                <li><a name="Spr21" id="QuartYear" class="dropdown-item">Spring 2021</a></li>
+                <li><a name="Win21" id="QuartYear" class="dropdown-item">Winter 2021</a></li>
+                <li><a name="Fall21" id="QuartYear" class="dropdown-item">Fall 2020</a></li>
             </ul>
         </div>
 
@@ -128,7 +131,7 @@
                     Preview</button>
                 <!--<button type="button" class="savebutton">Save</button> -->
                 <!-- <input type="submit" name="Submit" id="Submit" value="Click me to Contact"  class="btn btn-primary btn-lg btn-block"> -->
-                <input type="submit" name="Submit" id="Submit" value="Save"  class="savebutton">
+                <input type="submit" name="Submit" id="Submit" value="Save" class="savebutton" onclick="saveResult()">
                 <p></p>
                 <p>Sponsor Name </p>
                 <input name="SponsorName" id="SponsorName" class="title-box" type="text" placeholder="">
@@ -151,6 +154,10 @@
 
 
 </body>
+
+
+<!-- JAVASCRIPT -->
+
 <!-- https://www.w3schools.com/howto/howto_js_collapsible.asp-->
 <script>
     var coll = document.getElementsByClassName("collapsible");
@@ -167,6 +174,34 @@
             }
         });
     }
+
+    // selects option for course
+    $('.createproject-course-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedCourse').text($(this).text());
+    });
+
+    // selects option for quarter/year
+    $('.createproject-qy-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedQY').text($(this).text());
+    });
+
+    // save project 
+    function saveResult() {
+      var titleValue = document.getElementById("titleInput").value;
+      var descValue = document.getElementById("ProjectDesc").value;
+      var linkValue = document.getElementById("Linkss").value;
+      var courseValue = $('#selectedCourse').text();
+      var quarterYearValue = $('#selectedQY').text();
+      if (courseValue == "Select Course" || quarterYearValue == "Select Quarter/Year") 
+        console.log("Please select an option");
+      else
+        console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);  
+      
+    //   if (!isNaN(numberValue))
+    //      console.log("The value=" + parseInt(numberValue));
+    //   else
+    //      console.log("Please enter the integer value..");
+   }
 </script>
 
 </html>
