@@ -207,6 +207,7 @@ body {
     height: 125px;
 }
 
+
 /* create project - course & quarter/year dropdown */
 
 .createproject-course-dropdown {
@@ -220,6 +221,7 @@ body {
     z-index: 12;
     padding: 18px;
 }
+
 
 /* PROJECTS.HTML */
 
@@ -375,5 +377,5 @@ body {
 
 form {
     background-color: #edf5fa;
-    border: 20px solid #edf5fa;
+    border: 18px solid #edf5fa;
 }
