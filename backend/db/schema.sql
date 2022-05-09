@@ -1,22 +1,22 @@
-CREATE SCHEMA IF NOT EXISTS projects;
+CREATE SCHEMA IF NOT EXISTS `191for191`;
 
-CREATE TABLE projects.tag(
+CREATE TABLE `191for191`.tag(
 	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE projects.category(
+CREATE TABLE `191for191`.category(
 	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE projects.sponsor(
+CREATE TABLE `191for191`.sponsor(
 	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
 	website VARCHAR(50)
 );
 
-CREATE TABLE projects.person(
+CREATE TABLE `191for191`.person(
 	id INT NOT NULL PRIMARY KEY,
 	name_first VARCHAR(50) NOT NULL,
 	name_middle VARCHAR(50),
@@ -39,18 +39,18 @@ CREATE TABLE projects.person(
 	password VARCHAR(30)
 );
 
-CREATE TABLE projects.course_instance(
+CREATE TABLE `191for191`.course_instance(
 	id INT NOT NULL PRIMARY KEY,
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(100) NOT NULL,
 	professor_id INT,
 	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
 	year INT NOT NULL,
-	FOREIGN KEY (professor_id) REFERENCES projects.person (id)
+	FOREIGN KEY (professor_id) REFERENCES `191for191`.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE projects.project(
+CREATE TABLE `191for191`.project(
 	id INT NOT NULL PRIMARY KEY,
 	name VARCHAR(50) NOT NULL,
 	team_size INT NOT NULL,
@@ -60,38 +60,38 @@ CREATE TABLE projects.project(
 	image VARCHAR(1024),
 	state ENUM('COMPLETED', 'IN_PROGRESS', 'NOT_STARTED'),
 	course_instance_id INT,
-	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES `191for191`.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (course_instance_id) REFERENCES projects.course_instance (id)
+	FOREIGN KEY (course_instance_id) REFERENCES `191for191`.course_instance (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE projects.project_tag(
+CREATE TABLE `191for191`.project_tag(
 	project_id INT,
 	tag_id INT,
 	PRIMARY KEY (project_id, tag_id),
-	FOREIGN KEY (project_id) REFERENCES projects.project (id)
+	FOREIGN KEY (project_id) REFERENCES `191for191`.project (id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (tag_id) REFERENCES projects.tag (id)
+	FOREIGN KEY (tag_id) REFERENCES `191for191`.tag (id)
 		on UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE projects.sponsor_category(
+CREATE TABLE `191for191`.sponsor_category(
 	sponsor_id INT,
 	category_id INT,
 	PRIMARY KEY (sponsor_id, category_id),
-	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES `191for191`.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (category_id) REFERENCES projects.category (id)
+	FOREIGN KEY (category_id) REFERENCES `191for191`.category (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE projects.sponsor_member(
+CREATE TABLE `191for191`.sponsor_member(
 	sponsor_id INT,
 	person_id INT,
 	PRIMARY KEY (sponsor_id, person_id),
-	FOREIGN KEY (sponsor_id) REFERENCES projects.sponsor (id)
+	FOREIGN KEY (sponsor_id) REFERENCES `191for191`.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (person_id) REFERENCES projects.person (id)
+	FOREIGN KEY (person_id) REFERENCES `191for191`.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );

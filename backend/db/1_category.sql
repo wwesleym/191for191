@@ -1,4 +1,4 @@
-INSERT INTO projects.category (id, name)
+INSERT INTO `191for191`.category (id, name)
 VALUES  (1, 'Profit'),
         (2, 'Non-Profit'),
         (3, 'Educational'),
