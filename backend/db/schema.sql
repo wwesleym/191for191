@@ -21,7 +21,7 @@ CREATE TABLE `191for191`.person(
 	name_first VARCHAR(50) NOT NULL,
 	name_middle VARCHAR(50),
 	name_last VARCHAR(50) NOT NULL,
-	email VARCHAR(100) NOT NULL,
+	email VARCHAR(100),
 	profile_pic VARCHAR(500),
 	github_username VARCHAR(100),
 	linkedin_username VARCHAR(100),
