@@ -40,12 +40,13 @@ CREATE TABLE `191for191`.person(
 );
 
 CREATE TABLE `191for191`.course_instance(
-	id INT NOT NULL PRIMARY KEY,
+	id INT NOT NULL,
+    year INT NOT NULL,
+    term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
 	department VARCHAR(100) NOT NULL,
 	number VARCHAR(5) NOT NULL,
 	professor_id INT,
-	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
-	year INT NOT NULL,
+	PRIMARY KEY (id, year, term),
 	FOREIGN KEY (professor_id) REFERENCES `191for191`.person (id)
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
