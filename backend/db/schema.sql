@@ -42,7 +42,7 @@ CREATE TABLE `191for191`.person(
 CREATE TABLE `191for191`.course_instance(
 	id INT NOT NULL PRIMARY KEY,
 	department VARCHAR(100) NOT NULL,
-	number VARCHAR(100) NOT NULL,
+	number VARCHAR(5) NOT NULL,
 	professor_id INT,
 	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL') NOT NULL,
 	year INT NOT NULL,
