@@ -86,11 +86,54 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span id="selectedCourse">Select Course</span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a name="Inf117" id="CourseName" class="dropdown-item">INF 117</a></li>
-                <li><a name="Inf191" id="CourseName" class="dropdown-item">INF 191</a></li>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="courses">
+                <li><a name="IN4MATX117" id="CourseName" class="dropdown-item">IN4MATX 117</a></li>
+                <li><a name="IN4MATX191" id="CourseName" class="dropdown-item">IN4MATX 191</a></li>
                 <!-- <li><a class="dropdown-item" href="#"></a></li> -->
             </ul>
+
+            <br><br><br>
+            <p>Add Course</p>
+            <input class="title-box" type="text" placeholder="Course Department" id="courseDeptInput" size="15">
+            <input class="title-box" type="text" placeholder="Course Number" id="courseNumInput" size="15">
+            <input class="title-box" type="text" placeholder="Course Code" id="courseCodeInput" size="10">
+            <button type="button" class="btn btn-outline-primary" onclick="addCourse()">Submit</button>
+            <script>
+                // adds user input to course dropdown list
+                function addCourse() {
+                    var courseDeptInput = document.getElementById('courseDeptInput').value;
+                    var courseNumInput = document.getElementById('courseNumInput').value;
+                    var courseCodeInput = document.getElementById('courseCodeInput').value;
+                    var selectCourses = document.getElementById('courses');
+                    
+                    // check if course is valid - course code?
+
+                    // check for duplicates
+                    let found = false;
+ 
+                    $("#courses li").each((id, elem) => {
+                    if (elem.innerText == courseDeptInput + " " + courseNumInput) {
+                        found = true;
+                    }
+                    });
+
+                    if (found) {
+                        console.log("Course already exists");
+                        return;
+                    }
+
+                    // add item to dropdown list
+                    var a = document.createElement('a');
+                    a.setAttribute('name', courseDeptInput + courseNumInput);
+                    a.setAttribute('id', 'CourseName');
+                    a.setAttribute('class', 'dropdown-item');
+                    a.appendChild(document.createTextNode(courseDeptInput + " " + courseNumInput));
+                    var li = document.createElement('li');
+                    li.appendChild(a);
+                    selectCourses.appendChild(li);
+                    console.log(selectCourses);
+                }
+            </script>
         </div>
         </div>
         <p> </p>
@@ -100,14 +143,60 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span id="selectedQY">Select Quarter/Year</span> 
                 </button>
-            <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1">
-                <li><a name="Spr22" id="QuartYear" class="dropdown-item">Spring 2022</a></li>
-                <li><a name="Win22" id="QuartYear" class="dropdown-item">Winter 2022</a></li>
-                <li><a name="Fall21" id="QuartYear" class="dropdown-item">Fall 2021</a></li>
-                <li><a name="Spr21" id="QuartYear" class="dropdown-item">Spring 2021</a></li>
-                <li><a name="Win21" id="QuartYear" class="dropdown-item">Winter 2021</a></li>
-                <li><a name="Fall21" id="QuartYear" class="dropdown-item">Fall 2020</a></li>
+            <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1" id="quarteryear">
+                <li><a name="Spring2022" id="QuartYear" class="dropdown-item">Spring 2022</a></li>
+                <li><a name="Winter2022" id="QuartYear" class="dropdown-item">Winter 2022</a></li>
+                <li><a name="Fall2021" id="QuartYear" class="dropdown-item">Fall 2021</a></li>
+                <li><a name="Spring2021" id="QuartYear" class="dropdown-item">Spring 2021</a></li>
+                <li><a name="Winter2021" id="QuartYear" class="dropdown-item">Winter 2021</a></li>
+                <li><a name="Fall2021" id="QuartYear" class="dropdown-item">Fall 2020</a></li>
             </ul>
+
+            <br><br><br>
+            <p>Add Quarter/Year</p>
+            <input class="title-box" type="text" placeholder="Quarter" id="quarterInput" size="15">
+            <input class="title-box" type="text" placeholder="Year" id="yearInput" size="10">
+            <button type="button" class="btn btn-outline-primary" onclick="addQY()">Submit</button>
+            <script>
+                // adds user input to quarter/year dropdown list
+                function addQY() {
+                    var quarterInput = document.getElementById('quarterInput').value;
+                    var yearInput = document.getElementById('yearInput').value;
+                    var selectQY = document.getElementById('quarteryear');
+                    
+                    // check if quarter/year is valid 
+                    if (!["Fall", "Winter", "Spring"].includes(quarterInput) ||
+                        parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
+                            console.log("Invalid quarter/year")
+                            return;
+                    }
+
+                    // check for duplicates
+                    let found = false;
+ 
+                    $("#quarteryear li").each((id, elem) => {
+                    if (elem.innerText == quarterInput + " " + yearInput) {
+                        found = true;
+                    }
+                    });
+
+                    if (found) {
+                        console.log("Quarter/year already exists");
+                        return;
+                    }
+
+                    // add item to dropdown list
+                    var a = document.createElement('a');
+                    a.setAttribute('name', quarterInput + yearInput);
+                    a.setAttribute('id', 'QuartYear');
+                    a.setAttribute('class', 'dropdown-item');
+                    a.appendChild(document.createTextNode(quarterInput + " " + yearInput));
+                    var li = document.createElement('li');
+                    li.appendChild(a);
+                    selectQY.appendChild(li);
+                    console.log(selectQY);
+                }
+            </script>
         </div>
 
         <p> </p>
@@ -192,10 +281,22 @@
       var linkValue = document.getElementById("Linkss").value;
       var courseValue = $('#selectedCourse').text();
       var quarterYearValue = $('#selectedQY').text();
+
+      // parse quarter and year
+      let substrings = quarterYearValue.split(' ');
+      var quarterValue = substrings[0];
+      var yearValue = substrings[1];
+
+      // parse course department and course number
+      let substrings2 = courseValue.split(' ');
+      var courseDeptValue = substrings2[0];
+      var courseNumValue = substrings2[1];
+
       if (courseValue == "Select Course" || quarterYearValue == "Select Quarter/Year") 
         console.log("Please select an option");
       else
-        console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);  
+        // console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);
+        console.log(courseDeptValue);  
       
     //   if (!isNaN(numberValue))
     //      console.log("The value=" + parseInt(numberValue));
