@@ -1,49 +1,28 @@
 <?php
-// database connection code
-
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-//$con = mysqli_connect('localhost', 'root', '','db_contact');
-
-// get the post records
-
-
-
-
-// SO THIS HOPEFULLY SAVES THE MOST OF THE THINGS WE NEED HOPEFULLY
-
-//basically this should lead to something like added and then add the stuff or something
+    $title =  $_POST['title']; //2, 
+    $ProjectDesc = $_POST['ProjectDesc'];//5
+    $CourseName = $_POST['CourseName']; // 9
+    $QuartYear = $_POST['QuartYear']; //10, 11
+    $Linkss = $_POST['Linkss']; //6
+    $SponsorName = $_POST['SponsorName'];//4
+    $TeamMem = $_POST['TeamMem'];
+    $ProjTags= $_POST['ProjTags']
 
 
 
-$ProjectDesc = $_POST['ProjectDesc'];
-$CourseName = $_POST['CourseName'];
-$QuartYear = $_POST['QuartYear'];
-$Linkss = $_POST['Linkss'];
-$SponsorName = $_POST['SponsorName'];
-$TeamMem = $_POST['TeamMem'];
-$ProjTags= $_POST['ProjTags']
+    $conn = new mysqli('db.matthewbietz.org','191for191admin','Capstone22','191for191');
+    if($conn->connect_error){
+        echo "$conn->connect_error";
+        die("Connection Failed : ". $conn->connect_error);
+    } else {
+        $stmt = $conn->prepare("insert into project(id, name, project_description ) values(?, ?, ?");
+        $stmt->bind_param("iss", 4, $title, $ProjectDesc);
+        $execval = $stmt->execute();
+        echo $execval;
+        echo "Registration successfully...";
+        $stmt->close();
+        $conn->close();
+    }
 
 
-
-
-
-
-
-
-
-// database insert SQL code
-//$sql = "INSERT INTO `tbl_contact` (`Id`, `fldName`, `fldEmail`, `fldPhone`, `fldMessage`) VALUES ('0', '$txtName', '$txtEmail', '$txtPhone', '$txtMessage')";
-
-// insert in database 
-//$rs = mysqli_query($con, $sql);
-//if($rs)
-//{
-//	echo "Contact Records Inserted";
-//}
-//}
-//else
-//{
-//	echo "Are you a genuine visitor?";
-	
-//}
 ?>
