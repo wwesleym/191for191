@@ -61,9 +61,11 @@ CREATE TABLE `191for191`.project(
 	image VARCHAR(1024),
 	state ENUM('COMPLETED', 'IN_PROGRESS', 'NOT_STARTED'),
 	course_instance_id INT,
+	year INT,
+	term ENUM('WINTER', 'SPRING', 'SUMMER', 'FALL'),
 	FOREIGN KEY (sponsor_id) REFERENCES `191for191`.sponsor (id)
 		ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (course_instance_id) REFERENCES `191for191`.course_instance (id)
+	FOREIGN KEY (course_instance_id, year, term) REFERENCES `191for191`.course_instance (id, year, term)
 		ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
