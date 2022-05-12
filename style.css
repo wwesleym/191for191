@@ -376,6 +376,7 @@ body {
 }
 
 form {
-    background-color: #edf5fa;
-    border: 18px solid #edf5fa;
+    /* suppose to be #edf5fa */
+    background-color: #ffffff;
+    border: 18px solid #ffffff;
 }
