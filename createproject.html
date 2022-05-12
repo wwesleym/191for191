@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -65,183 +65,185 @@
 
     <!-- mainbody -->
     <form action="createproject.php" method="post">
-        <main class="main-body">
-            <fieldset>
-                <!-- <form name="CreateProj" class="needs-validation" method="post" action="createproject.php"> -->
+    <main class="main-body">
+        <fieldset>
+            <!-- <form name="CreateProj" class="needs-validation" method="post" action="createproject.php"> -->
+        
+            <div class="title-box-create-project">
+            <input class="title-box" type="text" placeholder="Title" id="titleInput" name="title" size="70">
+        </div>
+        </div>
+        <p> </p>
 
-                <div class="title-box-create-project">
-                    <input class="title-box" type="text" placeholder="Title" id="titleInput" name="title" size="70">
-                </div>
-                </div>
-                <p> </p>
+        <button type="button" class="collapsible">Project Description</button>
+        <div class="content">
+            <input name="ProjectDesc" class="form-control" id="ProjectDesc"  type="text" placeholder="Add Description" size="115" height="80">
+        </div>
+        <p> </p>
 
-                <button type="button" class="collapsible">Project Description</button>
-                <div class="content">
-                    <textarea name="ProjectDesc" class="form-control" id="ProjectDesc" type="text" placeholder="Add Description"></textarea>
-                </div>
-                <p> </p>
+        <button type="button" class="collapsible">Course</button>
 
-                <button type="button" class="collapsible">Course</button>
-
-                <div class="createproject-course-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="createproject-course-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span id="selectedCourse">Select Course</span>
             </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="courses">
-                        <li><a value="IN4MATX117" id="CourseName" name="CourseName" class="dropdown-item">IN4MATX 117</a></li>
-                        <li><a value="IN4MATX191" id="CourseName" name="CourseName" class="dropdown-item">IN4MATX 191</a></li>
-                        <!-- <li><a class="dropdown-item" href="#"></a></li> -->
-                    </ul>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="courses">
+                <li><a value="IN4MATX117" id="CourseName" name="CourseName"  class="dropdown-item">IN4MATX 117</a></li>
+                <li><a value="IN4MATX191" id="CourseName" name="CourseName"  class="dropdown-item">IN4MATX 191</a></li>
+                <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+            </ul>
 
-                    <br><br><br>
-                    <p>Add Course</p>
-                    <input class="title-box" type="text" placeholder="Course Department" id="courseDeptInput" size="15">
-                    <input class="title-box" type="text" placeholder="Course Number" id="courseNumInput" size="15">
-                    <input class="title-box" type="text" placeholder="Course Code" id="courseCodeInput" size="10">
-                    <button type="button" class="btn btn-outline-primary" onclick="addCourse()">Submit</button>
-                    <script>
-                        // adds user input to course dropdown list
-                        function addCourse() {
-                            var courseDeptInput = document.getElementById('courseDeptInput').value;
-                            var courseNumInput = document.getElementById('courseNumInput').value;
-                            var courseCodeInput = document.getElementById('courseCodeInput').value;
-                            var selectCourses = document.getElementById('courses');
+            <br><br><br>
+            <p>Add Course</p>
+            <input class="title-box" type="text" placeholder="Course Department" id="courseDeptInput" size="15">
+            <input class="title-box" type="text" placeholder="Course Number" id="courseNumInput" size="15">
+            <input class="title-box" type="text" placeholder="Course Code" id="courseCodeInput" name="courseCode" size="10">
+            <button type="button" class="btn btn-outline-primary" onclick="addCourse()">Submit</button>
+            <script>
+                // adds user input to course dropdown list
+                function addCourse() {
+                    var courseDeptInput = document.getElementById('courseDeptInput').value;
+                    var courseNumInput = document.getElementById('courseNumInput').value;
+                    var courseCodeInput = document.getElementById('courseCodeInput').value;
+                    var selectCourses = document.getElementById('courses');
+                    
+                    // check if course is valid - course code?
 
-                            // check if course is valid - course code?
+                    // check for duplicates
+                    let found = false;
+ 
+                    $("#courses li").each((id, elem) => {
+                    if (elem.innerText == courseDeptInput + " " + courseNumInput) {
+                        found = true;
+                    }
+                    });
 
-                            // check for duplicates
-                            let found = false;
+                    if (found) {
+                        console.log("Course already exists");
+                        return;
+                    }
 
-                            $("#courses li").each((id, elem) => {
-                                if (elem.innerText == courseDeptInput + " " + courseNumInput) {
-                                    found = true;
-                                }
-                            });
+                    // add item to dropdown list
+                    var a = document.createElement('a');
+                    a.setAttribute('name', courseDeptInput + courseNumInput);
+                    a.setAttribute('id', 'CourseName');
+                    a.setAttribute('class', 'dropdown-item');
+                    a.appendChild(document.createTextNode(courseDeptInput + " " + courseNumInput));
+                    var li = document.createElement('li');
+                    li.appendChild(a);
+                    selectCourses.appendChild(li);
+                    console.log(selectCourses);
+                }
+            </script>
+        </div>
+        </div>
+        <p> </p>
 
-                            if (found) {
-                                console.log("Course already exists");
-                                return;
-                            }
-
-                            // add item to dropdown list
-                            var a = document.createElement('a');
-                            a.setAttribute('name', courseDeptInput + courseNumInput);
-                            a.setAttribute('id', 'CourseName');
-                            a.setAttribute('class', 'dropdown-item');
-                            a.appendChild(document.createTextNode(courseDeptInput + " " + courseNumInput));
-                            var li = document.createElement('li');
-                            li.appendChild(a);
-                            selectCourses.appendChild(li);
-                            console.log(selectCourses);
-                        }
-                    </script>
-                </div>
-                </div>
-                <p> </p>
-
-                <button type="button" class="collapsible">Quarter/Year</button>
-                <div class="createproject-qy-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="collapsible">Quarter/Year</button>
+        <div class="createproject-qy-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span id="selectedQY">Select Quarter/Year</span> 
                 </button>
-                    <!-- maybe we can make this different as in split the quarter and the year into 2 different categories
+                <!-- maybe we can make this different as in split the quarter and the year into 2 different categories
                 because thats 2 seperate items in the sql database -->
-                    <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1" id="quarteryear">
-                        <li><a id="QuartYear" name="QuartYear" value="Spring2022" class="dropdown-item">Spring 2022</a></li>
-                        <li><a id="QuartYear" name="QuartYear" value="Winter2022" class="dropdown-item">Winter 2022</a></li>
-                        <li><a id="QuartYear" name="QuartYear" value="Fall2021" class="dropdown-item">Fall 2021</a></li>
-                        <li><a id="QuartYear" name="QuartYear" value="Spring2021" class="dropdown-item">Spring 2021</a></li>
-                        <li><a id="QuartYear" name="QuartYear" value="Winter2021" class="dropdown-item">Winter 2021</a></li>
-                        <li><a id="QuartYear" name="QuartYear" value="Fall2021" class="dropdown-item">Fall 2020</a></li>
-                    </ul>
+            <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1" id="quarteryear">
+                <li><a  id="QuartYear" name="QuartYear" value="Spring2022" class="dropdown-item">Spring 2022</a></li>
+                <li><a  id="QuartYear" name="QuartYear" value="Winter2022" class="dropdown-item">Winter 2022</a></li>
+                <li><a  id="QuartYear" name="QuartYear" value="Fall2021" class="dropdown-item">Fall 2021</a></li>
+                <li><a  id="QuartYear" name="QuartYear" value="Spring2021" class="dropdown-item">Spring 2021</a></li>
+                <li><a  id="QuartYear" name="QuartYear" value="Winter2021" class="dropdown-item">Winter 2021</a></li>
+                <li><a  id="QuartYear" name="QuartYear" value="Fall2021" class="dropdown-item">Fall 2020</a></li>
+            </ul>
 
-                    <br><br><br>
-                    <p>Add Quarter/Year</p>
-                    <input class="title-box" type="text" placeholder="Quarter" id="quarterInput" size="15">
-                    <input class="title-box" type="text" placeholder="Year" id="yearInput" size="10">
-                    <button type="button" class="btn btn-outline-primary" onclick="addQY()">Submit</button>
-                    <script>
-                        // adds user input to quarter/year dropdown list
-                        function addQY() {
-                            var quarterInput = document.getElementById('quarterInput').value;
-                            var yearInput = document.getElementById('yearInput').value;
-                            var selectQY = document.getElementById('quarteryear');
+            <br><br><br>
+            <p>Add Quarter/Year</p>
+            <input class="title-box" type="text" placeholder="Quarter" id="quarterInput" name="quarterInput" size="15">
+            <input class="title-box" type="text" placeholder="Year" id="yearInput" name="yearInput" size="10">
+            <button type="button" class="btn btn-outline-primary" onclick="addQY()">Submit</button>
+            <script>
+                // adds user input to quarter/year dropdown list
+                function addQY() {
+                    var quarterInput = document.getElementById('quarterInput').value;
+                    var yearInput = document.getElementById('yearInput').value;
+                    var selectQY = document.getElementById('quarteryear');
+                    
+                    // check if quarter/year is valid 
+                    if (!["Fall", "Winter", "Spring"].includes(quarterInput) ||
+                        parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
+                            console.log("Invalid quarter/year")
+                            return;
+                    }
 
-                            // check if quarter/year is valid 
-                            if (!["Fall", "Winter", "Spring"].includes(quarterInput) ||
-                                parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
-                                console.log("Invalid quarter/year")
-                                return;
-                            }
+                    // check for duplicates
+                    let found = false;
+ 
+                    $("#quarteryear li").each((id, elem) => {
+                    if (elem.innerText == quarterInput + " " + yearInput) {
+                        found = true;
+                    }
+                    });
 
-                            // check for duplicates
-                            let found = false;
+                    if (found) {
+                        console.log("Quarter/year already exists");
+                        return;
+                    }
 
-                            $("#quarteryear li").each((id, elem) => {
-                                if (elem.innerText == quarterInput + " " + yearInput) {
-                                    found = true;
-                                }
-                            });
+                    // add item to dropdown list
+                    var a = document.createElement('a');
+                    a.setAttribute('name', quarterInput + yearInput);
+                    a.setAttribute('id', 'QuartYear');
+                    a.setAttribute('class', 'dropdown-item');
+                    a.appendChild(document.createTextNode(quarterInput + " " + yearInput));
+                    var li = document.createElement('li');
+                    li.appendChild(a);
+                    selectQY.appendChild(li);
+                    console.log(selectQY);
 
-                            if (found) {
-                                console.log("Quarter/year already exists");
-                                return;
-                            }
+                    // add something to change the button to the new things because they don't show up at all.
+                }
+            </script>
+        </div>
 
-                            // add item to dropdown list
-                            var a = document.createElement('a');
-                            a.setAttribute('name', quarterInput + yearInput);
-                            a.setAttribute('id', 'QuartYear');
-                            a.setAttribute('class', 'dropdown-item');
-                            a.appendChild(document.createTextNode(quarterInput + " " + yearInput));
-                            var li = document.createElement('li');
-                            li.appendChild(a);
-                            selectQY.appendChild(li);
-                            console.log(selectQY);
-                        }
-                    </script>
-                </div>
+        <p> </p>
 
-                <p> </p>
+        <button type="button" class="collapsible">Links</button>
+        <div class="content">
+            <input name="Linkss" id="Linkss" name="Linkss" class="title-box" type="text" placeholder="">
+        </div>
 
-                <button type="button" class="collapsible">Links</button>
-                <div class="content">
-                    <input name="Linkss" id="Linkss" name="Linkss" class="title-box" type="text" placeholder="">
-                </div>
+    </main>
 
-        </main>
-
-        <!-- side bar2 -->
-        <div class="createproject-sidebar2">
-            <nav id="sidebarMenu">
-                <ul>
-                    <button type="button" class="previewbutton"> 
+    <!-- side bar2 -->
+    <div class="createproject-sidebar2">
+        <nav id="sidebarMenu">
+            <ul>
+                <button type="button" class="previewbutton"> 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                       </svg>
                     Preview</button>
-                    <!--<button type="button" class="savebutton">Save</button> -->
-                    <!-- <input type="submit" name="Submit" id="Submit" value="Click me to Contact"  class="btn btn-primary btn-lg btn-block"> -->
-                    <input type="submit" name="Submit" id="Submit" value="Save" class="btn btn-primary savebutton" onclick="saveResult()">
-                    <p></p>
-                    <p>Sponsor Name </p>
-                    <input name="SponsorName" id="SponsorName" class="title-box" type="text" placeholder="">
-                    <a class="nav-link" href="addsponsor.php">
-                        <button type="button" class="replacebutton">+ Sponsor</button></a>
+                <!--<button type="button" class="savebutton">Save</button> -->
+                <!-- <input type="submit" name="Submit" id="Submit" value="Click me to Contact"  class="btn btn-primary btn-lg btn-block"> -->
+                <input type="submit" name="Submit" id="Submit" value="Save" class="btn btn-primary savebutton" onclick="saveResult()">
+                <p></p>
+                <p>Sponsor Name </p>
+                <input name="SponsorName" id="SponsorName" class="title-box" type="text" placeholder="">
+                <a class="nav-link" href="addsponsor.php">
+                    <button type="button" class="replacebutton">+ Sponsor</button></a>
+                
+                <p></p>
+                <p>Team Members</p>
+                <input name="TeamMem" id="TeamMem" class="title-box" type="text" placeholder="">
+                <p></p>
+                <p>Tags</p>
+                <input name="ProjTags" id="ProjTags" class="title-box" type="text" placeholder="">
+            </ul>
+        </nav>
+    </div>
 
-                    <p></p>
-                    <p>Team Members</p>
-                    <input name="TeamMem" id="TeamMem" class="title-box" type="text" placeholder="">
-                    <p></p>
-                    <p>Tags</p>
-                    <input name="ProjTags" id="ProjTags" class="title-box" type="text" placeholder="">
-                </ul>
-            </nav>
-        </div>
-
-    </form>
-    </fieldset>
+</form>
+</fieldset>
 
 
 
@@ -279,34 +281,33 @@
 
     // save project 
     function saveResult() {
-        var titleValue = document.getElementById("titleInput").value;
-        var descValue = document.getElementById("ProjectDesc").value;
-        var linkValue = document.getElementById("Linkss").value;
-        var courseValue = $('#selectedCourse').text();
-        var quarterYearValue = $('#selectedQY').text();
+      var titleValue = document.getElementById("titleInput").value;
+      var descValue = document.getElementById("ProjectDesc").value;
+      var linkValue = document.getElementById("Linkss").value;
+      var courseValue = $('#selectedCourse').text();
+      var quarterYearValue = $('#selectedQY').text();
 
-        // parse quarter and year
-        let substrings = quarterYearValue.split(' ');
-        var quarterValue = substrings[0];
-        var yearValue = substrings[1];
+      // parse quarter and year
+      let substrings = quarterYearValue.split(' ');
+      var quarterValue = substrings[0];
+      var yearValue = substrings[1];
 
-        // parse course department and course number
-        let substrings2 = courseValue.split(' ');
-        var courseDeptValue = substrings2[0];
-        var courseNumValue = substrings2[1];
-        document.write(courseDeptValue);
+      // parse course department and course number
+      let substrings2 = courseValue.split(' ');
+      var courseDeptValue = substrings2[0];
+      var courseNumValue = substrings2[1];
 
-        if (courseValue == "Select Course" || quarterYearValue == "Select Quarter/Year")
-            console.log("Please select an option");
-        else
+      if (courseValue == "Select Course" || quarterYearValue == "Select Quarter/Year") 
+        console.log("Please select an option");
+      else
         // console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);
-            console.log(courseDeptValue);
-
-        //   if (!isNaN(numberValue))
-        //      console.log("The value=" + parseInt(numberValue));
-        //   else
-        //      console.log("Please enter the integer value..");
-    }
+        console.log(courseDeptValue);  
+      
+    //   if (!isNaN(numberValue))
+    //      console.log("The value=" + parseInt(numberValue));
+    //   else
+    //      console.log("Please enter the integer value..");
+   }
 </script>
 
 </html>

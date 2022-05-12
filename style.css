@@ -376,7 +376,6 @@ body {
 }
 
 form {
-    /* colors for forms should be #edf5fa but that messes up create projects page*/
-    background-color: #ffffff;
-    border: 18px solid #ffffff;
+    background-color: #edf5fa;
+    border: 18px solid #edf5fa;
 }
