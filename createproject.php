@@ -24,5 +24,29 @@
         $conn->close();
     }
 
+    /* https://www.9lessons.info/2008/12/twitter-used-jquery-plug-in.html 
+        idk what im doing here lol
+    */
+    
+    /*
+    if(isSet($_POST['username']))
+    {
+    $username = $_POST['username'];
+
+    include("dbconnection.php");
+    
+
+    $sql_check = mysql_query("SELECT course,quarter FROM backend/db/4_course_instance.sql WHERE course='$CourseName' AND quarter = '$QuartYear'");
+
+    if(mysql_num_rows($sql_check))
+    {
+    echo '<span style="color: red;">The course <b>'.$CourseName.'</b> does not exist.</span>';
+    }
+    else
+    {
+    echo 'OK';
+    }}  
+
+    */
 
 ?>
