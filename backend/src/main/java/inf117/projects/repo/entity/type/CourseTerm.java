@@ -34,7 +34,7 @@ public enum CourseTerm {
                 return FALL;
             default:
                 // TODO: Create a custom exception for invalid course terms.
-                return null;
+                throw new IllegalArgumentException("Term not found");
         }
     }
 }

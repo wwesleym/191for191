@@ -31,7 +31,7 @@ public enum ProjectState {
                 return NOT_STARTED;
             default:
                 // TODO: Create a custom exception for invalid project states.
-                return null;
+                throw new IllegalArgumentException("State not found");
         }
     }
 }
