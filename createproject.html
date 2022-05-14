@@ -65,7 +65,7 @@
     </div>
 
     <!-- mainbody -->
-    <form action="createproject.php" method="post">
+    <!-- <form action="createproject.php" method="post"> -->
         <main class="main-body">
             <fieldset>
                 <!-- <form name="CreateProj" class="needs-validation" method="post" action="createproject.php"> -->
@@ -88,57 +88,103 @@
                 <p> </p>
 
                 <button type="button" class="collapsible">Course</button>
-
                 <div class="createproject-course-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="selectedCourse">Select Course</span>
-                 </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="courses">
-                        <li><a value="IN4MATX117" id="CourseName" name="CourseName" class="dropdown-item">IN4MATX 117</a></li>
-                        <li><a value="IN4MATX191" id="CourseName" name="CourseName" class="dropdown-item">IN4MATX 191</a></li>
-                        <!-- <li><a class="dropdown-item" href="#"></a></li> -->
-                    </ul>
+                    <span class="dept-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedDept">Select Department</span> 
+                        </button>
+                        <ul class="dropdown-menu dept" aria-labelledby="dropdownMenuButton1" id="coursedept">
+                            <li><a id="Dept" name="Dept" value="COMPSCI" class="dropdown-item">COMPSCI</a></li>
+                            <li><a id="Dept" name="Dept" value="IN4MATX" class="dropdown-item">IN4MATX</a></li>
+                        </ul>
+                    </span>
+
+                    <span class="coursenum-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedCourseNum">Select Course Number</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="coursenum">
+                            <li><a value="117" id="CourseNum" name="CourseNum" class="dropdown-item">117</a></li>
+                            <li><a value="191" id="CourseNum" name="CourseNum" class="dropdown-item">191</a></li>
+                        </ul>
+                    </span>
 
                     <br><br><br>
                     <p>Add Course</p>
-                    <input class="title-box" type="text" placeholder="Course Department" id="courseDeptInput" size="15">
+                    <!-- <input class="title-box" type="text" placeholder="Course Department" id="courseDeptInput" size="15"> -->
                     <input class="title-box" type="text" placeholder="Course Number" id="courseNumInput" size="15">
                     <input class="title-box" type="text" placeholder="Course Code" id="courseCodeInput" name="courseCode" size="10">
                     <button type="button" class="btn btn-outline-primary" onclick="addCourse()">Submit</button>
                     <script>
                         // adds user input to course dropdown list
                         function addCourse() {
-                            var courseDeptInput = document.getElementById('courseDeptInput').value;
+                            // var courseDeptInput = document.getElementById('courseDeptInput').value;
                             var courseNumInput = document.getElementById('courseNumInput').value;
                             var courseCodeInput = document.getElementById('courseCodeInput').value;
-                            var selectCourses = document.getElementById('courses');
+                            var selectCourseNum = document.getElementById('coursenum');
 
-                            // check if course is valid - course code?
+                            // check numbers only
+                            let isnum = /^\d+$/.test(courseNumInput);
+                            if (!isnum) {
+                                console.log("Numbers only")
+                                return;
+                            }
 
                             // check for duplicates
                             let found = false;
-
-                            $("#courses li").each((id, elem) => {
-                                if (elem.innerText == courseDeptInput + " " + courseNumInput) {
+                            $("#coursenum li").each((id, elem) => {
+                                if (elem.innerText == courseNumInput) {
                                     found = true;
                                 }
                             });
-
                             if (found) {
-                                console.log("Course already exists");
+                                console.log("Course Num already exists");
                                 return;
                             }
 
                             // add item to dropdown list
                             var a = document.createElement('a');
-                            a.setAttribute('name', courseDeptInput + courseNumInput);
-                            a.setAttribute('id', 'CourseName');
+                            a.setAttribute('value', courseNumInput);
+                            a.setAttribute('id', 'CourseNum');
+                            a.setAttribute('name', 'CourseNum');
                             a.setAttribute('class', 'dropdown-item');
-                            a.appendChild(document.createTextNode(courseDeptInput + " " + courseNumInput));
+                            a.appendChild(document.createTextNode(courseNumInput));
                             var li = document.createElement('li');
                             li.appendChild(a);
-                            selectCourses.appendChild(li);
-                            console.log(selectCourses);
+                            selectCourseNum.appendChild(li);
+                            console.log(selectCourseNum);
+
+                            // sort dropdown list - https://www.w3schools.com/howto/howto_js_sort_list.asp
+                            var list, i, switching, b, shouldSwitch;
+                            list = document.getElementById("coursenum");
+                            switching = true;
+                            /* Make a loop that will continue until
+                            no switching has been done: */
+                            while (switching) {
+                                // start by saying: no switching is done:
+                                switching = false;
+                                b = list.getElementsByTagName("a");
+                                // Loop through all list-items:
+                                for (i = 0; i < (b.length - 1); i++) {
+                                    // start by saying there should be no switching:
+                                    shouldSwitch = false;
+                                    /* check if the next item should
+                                    switch place with the current item: */
+                                    if (Number(b[i].innerHTML) > Number(b[i + 1].innerHTML)) {
+                                        /* if next item is numerically
+                                        lower than current item, mark as a switch
+                                        and break the loop: */
+                                        shouldSwitch = true;
+                                        break;
+                                    }
+                                }
+                                if (shouldSwitch) {
+                                /* If a switch has been marked, make the switch
+                                and mark the switch as done: */
+                                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                                switching = true;
+                                }
+                            }
                         }
                     </script>
                 </div>
@@ -147,11 +193,22 @@
 
                 <button type="button" class="collapsible">Quarter/Year</button>
                 <div class="createproject-qy-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="selectedQY">Select Quarter/Year</span> 
-                </button>
-                    <!-- maybe we can make this different as in split the quarter and the year into 2 different categories
-                because thats 2 seperate items in the sql database -->
+                    <span class="q-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedQuart">Select Quarter</span> 
+                        </button>
+                        <ul class="dropdown-menu quarter" aria-labelledby="dropdownMenuButton1" id="quarter">
+                            <li><a id="Quart" name="Quart" value="Fall" class="dropdown-item">Fall</a></li>
+                            <li><a id="Quart" name="Quart" value="Winter" class="dropdown-item">Winter</a></li>
+                            <li><a id="Quart" name="Quart" value="Spring" class="dropdown-item">Spring</a></li>
+                            <!-- <li><a id="Quart" name="Quart" value="Summer" class="dropdown-item">Summer</a></li> -->
+                        </ul>
+                    </span>
+
+
+                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span id="selectedQY">Select Quarter/Year</span> 
+                    </button>
                     <ul class="dropdown-menu quarteryear" aria-labelledby="dropdownMenuButton1" id="quarteryear">
                         <li><a id="QuartYear" name="QuartYear" value="Spring2022" class="dropdown-item">Spring 2022</a></li>
                         <li><a id="QuartYear" name="QuartYear" value="Winter2022" class="dropdown-item">Winter 2022</a></li>
@@ -159,51 +216,110 @@
                         <li><a id="QuartYear" name="QuartYear" value="Spring2021" class="dropdown-item">Spring 2021</a></li>
                         <li><a id="QuartYear" name="QuartYear" value="Winter2021" class="dropdown-item">Winter 2021</a></li>
                         <li><a id="QuartYear" name="QuartYear" value="Fall2021" class="dropdown-item">Fall 2020</a></li>
-                    </ul>
+                    </ul> -->
+
+                    <span class="y-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedYear">Select Year</span> 
+                        </button>
+                        <ul class="dropdown-menu year" aria-labelledby="dropdownMenuButton1" id="year">
+                            <li><a id="Year" name="Year" value="2022" class="dropdown-item">2022</a></li>
+                            <li><a id="Year" name="Year" value="2021" class="dropdown-item">2021</a></li>
+                            <li><a id="Year" name="Year" value="2020" class="dropdown-item">2020</a></li>
+                            <li><a id="Year" name="Year" value="2019" class="dropdown-item">2019</a></li>
+                            <li><a id="Year" name="Year" value="2018" class="dropdown-item">2018</a></li>
+                            <li><a id="Year" name="Year" value="2017" class="dropdown-item">2017</a></li>
+                        </ul>
+                    </span>
 
                     <br><br><br>
-                    <p>Add Quarter/Year</p>
-                    <input class="title-box" type="text" placeholder="Quarter" id="quarterInput" name="quarterInput" size="15">
+                    <p>Add Year</p>
+                    <!-- <input class="title-box" type="text" placeholder="Quarter" id="quarterInput" name="quarterInput" size="15"> -->
                     <input class="title-box" type="text" placeholder="Year" id="yearInput" name="yearInput" size="10">
                     <button type="button" class="btn btn-outline-primary" onclick="addQY()">Submit</button>
                     <script>
                         // adds user input to quarter/year dropdown list
                         function addQY() {
-                            var quarterInput = document.getElementById('quarterInput').value;
+                            // var quarterInput = document.getElementById('quarterInput').value;
                             var yearInput = document.getElementById('yearInput').value;
-                            var selectQY = document.getElementById('quarteryear');
+                            var selectY = document.getElementById('year');
+                            // var selectQY = document.getElementById('quarteryear');
 
                             // check if quarter/year is valid 
-                            if (!["Fall", "Winter", "Spring"].includes(quarterInput) ||
-                                parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
-                                console.log("Invalid quarter/year")
+                            // if (!["Fall", "Winter", "Spring"].includes(quarterInput) ||
+                            //     parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
+                            //     console.log("Invalid quarter/year")
+                            //     return;
+                            // }
+
+                            // check numbers only
+                            let isnum = /^\d+$/.test(yearInput);
+                            if (!isnum) {
+                                console.log("Numbers only")
+                                return;
+                            }
+
+                            // check if year is valid
+                            if (parseInt(yearInput) < 1965 || parseInt(yearInput) > 2022) {
+                                console.log("Invalid year")
                                 return;
                             }
 
                             // check for duplicates
                             let found = false;
-
-                            $("#quarteryear li").each((id, elem) => {
-                                if (elem.innerText == quarterInput + " " + yearInput) {
+                            $("#year li").each((id, elem) => {
+                                if (elem.innerText == yearInput) {
                                     found = true;
                                 }
                             });
-
                             if (found) {
-                                console.log("Quarter/year already exists");
+                                console.log("Year already exists");
                                 return;
                             }
 
                             // add item to dropdown list
                             var a = document.createElement('a');
-                            a.setAttribute('name', quarterInput + yearInput);
-                            a.setAttribute('id', 'QuartYear');
+                            a.setAttribute('id', 'Year');
+                            a.setAttribute('name', 'Year');
+                            a.setAttribute('value', yearInput);
                             a.setAttribute('class', 'dropdown-item');
-                            a.appendChild(document.createTextNode(quarterInput + " " + yearInput));
+                            a.appendChild(document.createTextNode(yearInput));
                             var li = document.createElement('li');
                             li.appendChild(a);
-                            selectQY.appendChild(li);
-                            console.log(selectQY);
+                            selectY.appendChild(li);
+                            console.log(selectY);
+
+                            // sort dropdown list - https://www.w3schools.com/howto/howto_js_sort_list.asp
+                            var list, i, switching, b, shouldSwitch;
+                            list = document.getElementById("year");
+                            switching = true;
+                            /* Make a loop that will continue until
+                            no switching has been done: */
+                            while (switching) {
+                                // start by saying: no switching is done:
+                                switching = false;
+                                b = list.getElementsByTagName("a");
+                                // Loop through all list-items:
+                                for (i = 0; i < (b.length - 1); i++) {
+                                    // start by saying there should be no switching:
+                                    shouldSwitch = false;
+                                    /* check if the next item should
+                                    switch place with the current item: */
+                                    if (Number(b[i].innerHTML) < Number(b[i + 1].innerHTML)) {
+                                        /* if next item is numerically
+                                        lower than current item, mark as a switch
+                                        and break the loop: */
+                                        shouldSwitch = true;
+                                        break;
+                                    }
+                                }
+                                if (shouldSwitch) {
+                                /* If a switch has been marked, make the switch
+                                and mark the switch as done: */
+                                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                                switching = true;
+                                }
+                            }
 
                             // add something to change the button to the new things because they don't show up at all.
                         }
@@ -248,7 +364,6 @@
             </nav>
         </div>
 
-    </form>
     </fieldset>
 
 
@@ -275,14 +390,29 @@
         });
     }
 
-    // selects option for course
-    $('.createproject-course-dropdown .dropdown-menu li a').click(function() {
-        $('#selectedCourse').text($(this).text());
+    // selects option for course department
+    $('.createproject-course-dropdown .dept-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedDept').text($(this).text());
     });
 
-    // selects option for quarter/year
-    $('.createproject-qy-dropdown .dropdown-menu li a').click(function() {
-        $('#selectedQY').text($(this).text());
+    // selects option for course number
+    $('.createproject-course-dropdown .coursenum-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedCourseNum').text($(this).text());
+    });
+
+    // // selects option for quarter/year
+    // $('.createproject-qy-dropdown .dropdown-menu li a').click(function() {
+    //     $('#selectedQY').text($(this).text());
+    // });
+
+    // selects option for quarter
+    $('.createproject-qy-dropdown .q-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedQuart').text($(this).text());
+    });
+
+    // selects option for year
+    $('.createproject-qy-dropdown .y-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedYear').text($(this).text());
     });
 
     // save project 
@@ -291,24 +421,20 @@
         var descValue = document.getElementById("ProjectDesc").value;
         var linkValue = document.getElementById("Linkss").value;
         var courseValue = $('#selectedCourse').text();
-        var quarterYearValue = $('#selectedQY').text();
-
-        // parse quarter and year
-        let substrings = quarterYearValue.split(' ');
-        var quarterValue = substrings[0];
-        var yearValue = substrings[1];
+        var quarterValue = $('#selectedQuart').text();
+        var yearValue = $('#selectedYear').text();
 
         // parse course department and course number
         let substrings2 = courseValue.split(' ');
         var courseDeptValue = substrings2[0];
         var courseNumValue = substrings2[1];
 
-        if (courseValue == "Select Course" || quarterYearValue == "Select Quarter/Year")
+        if (courseValue == "Select Course" || quarterValue == "Select Quarter" || yearValue == "Select Year")
             console.log("Please select an option");
-        else
+        else {
         // console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);
-            console.log(courseDeptValue);
-
+            console.log(quarterValue + yearValue);
+        }
         //   if (!isNaN(numberValue))
         //      console.log("The value=" + parseInt(numberValue));
         //   else
