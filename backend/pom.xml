@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -49,9 +56,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.klefstad-teaching</groupId>
-            <artifactId>CS122B-Core</artifactId>
-            <version>1.0.2</version>
+            <groupId>com.codingsprojects.stack</groupId>
+            <artifactId>stack-core</artifactId>
+            <version>1.1.0</version>
         </dependency>
     </dependencies>
 
