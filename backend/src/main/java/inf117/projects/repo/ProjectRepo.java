@@ -27,8 +27,8 @@ public class ProjectRepo {
     public Project projectByProjectName(String name) {
         return this.template.queryForObject(
                 "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
-                    "FROM projects.project p " +
-                        "JOIN projects.sponsor s on s.id = p.sponsor_id " +
+                    "FROM `191for191`.project p " +
+                        "JOIN `191for191`.sponsor s on s.id = p.sponsor_id " +
                     "WHERE p.name LIKE :name ",
                 new MapSqlParameterSource()
                         .addValue("name", '%'+name+'%', Types.VARCHAR),
@@ -66,7 +66,7 @@ public class ProjectRepo {
 
         // Insert project in database
         this.template.update(
-                "INSERT INTO projects.project (id, name, team_size, sponsor_id, " +
+                "INSERT INTO `191for191`.project (id, name, team_size, sponsor_id, " +
                         "project_description, pitch_video, image, state, course_instance_id) " +
                     "VALUES (:id, :name, :teamSize, :sponsorId, " +
                         ":projectDescription, :pitchVideo, :image, :state, :courseId);",
@@ -88,7 +88,7 @@ public class ProjectRepo {
         try {
             return this.template.queryForObject(
                     "SELECT s.id, s.name " +
-                            "FROM projects.sponsor s " +
+                            "FROM `191for191`.sponsor s " +
                             "WHERE s.name LIKE :name ",
                     new MapSqlParameterSource()
                             .addValue("name", '%'+name+'%', Types.VARCHAR),
@@ -105,7 +105,7 @@ public class ProjectRepo {
 
     public void insertSponsor(Sponsor sponsor) {
         this.template.update(
-                "INSERT INTO projects.sponsor (id, name) " +
+                "INSERT INTO `191for191`.sponsor (id, name) " +
                     "VALUES (:id, :name);",
                 new MapSqlParameterSource()
                         .addValue("id", sponsor.getId(), Types.INTEGER)
@@ -117,8 +117,8 @@ public class ProjectRepo {
     {
         return this.template.queryForObject(
                 "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
-                        "FROM projects.project p " +
-                        "JOIN projects.sponsor s on s.id = p.sponsor_id " +
+                        "FROM `191for191`.project p " +
+                        "JOIN `191for191`.sponsor s on s.id = p.sponsor_id " +
                         "WHERE p.id LIKE :Id ",
                 new MapSqlParameterSource()
                         .addValue("Id", '%'+Id+'%', Types.VARCHAR),
@@ -140,7 +140,7 @@ public class ProjectRepo {
         try {
             return this.template.queryForObject(
                     "SELECT s.id, s.name " +
-                            "FROM projects.sponsor s " +
+                            "FROM `191for191`.sponsor s " +
                             "WHERE s.id LIKE :Id ",
                     new MapSqlParameterSource()
                             .addValue("id", '%'+Id+'%', Types.INTEGER),
