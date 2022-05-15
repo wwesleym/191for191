@@ -1,6 +1,5 @@
 package inf117.projects.repo.entity;
 
-import inf117.projects.repo.entity.type.CourseTerm;
 import inf117.projects.repo.entity.type.ProjectState;
 
 public class Project {
@@ -13,8 +12,6 @@ public class Project {
     private String image;
     private ProjectState state;
     private int courseId;
-    private int year;
-    private CourseTerm term;
 
     public int getId() {
         return id;
@@ -94,24 +91,6 @@ public class Project {
 
     public Project setCourseId(int courseId) {
         this.courseId = courseId;
-        return this;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public Project setYear(int year) {
-        this.year = year;
-        return this;
-    }
-
-    public CourseTerm getTerm() {
-        return term;
-    }
-
-    public Project setTerm(CourseTerm term) {
-        this.term = term;
         return this;
     }
 }

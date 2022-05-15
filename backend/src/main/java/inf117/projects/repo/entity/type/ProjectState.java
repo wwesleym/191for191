@@ -23,15 +23,13 @@ public enum ProjectState {
         }
 
         switch (state.toUpperCase(Locale.ROOT).replace('_', ' ')) {
-            case "COMPLETED":
-                return COMPLETED;
             case "IN PROGRESS":
                 return IN_PROGRESS;
             case "NOT STARTED":
                 return NOT_STARTED;
             default:
                 // TODO: Create a custom exception for invalid project states.
-                throw new IllegalArgumentException("State not found");
+                return null;
         }
     }
 }

@@ -8,17 +8,15 @@ public class SponsorRequestModel {
         return name;
     }
 
-    public SponsorRequestModel setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public Integer getId() {
         return Id;
     }
 
-    public SponsorRequestModel setId(Integer id) {
+    public void setId(Integer id) {
         Id = id;
-        return this;
     }
 }

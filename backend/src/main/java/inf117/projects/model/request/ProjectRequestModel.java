@@ -8,17 +8,15 @@ public class ProjectRequestModel {
         return name;
     }
 
-    public ProjectRequestModel setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public Integer getId() {
         return Id;
     }
 
-    public ProjectRequestModel setId(Integer id) {
+    public void setId(Integer id) {
         Id = id;
-        return this;
     }
 }
