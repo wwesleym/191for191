@@ -161,6 +161,11 @@ body {
     margin-right: 5%;
 }
 
+.media-form {
+    background-color: #edf5fa;
+    border: 15px solid #edf5fa;
+}
+
 .collapsible {
     background-color: #edf5fa;
     color: #1a609e;
