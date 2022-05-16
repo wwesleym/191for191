@@ -7,7 +7,7 @@ body {
 }
 
 .createproject-form-background {
-    /*border-radius: 20px;*/
+    border-radius: 15px;
     background-color: white;
     border: 18px solid white;
     ;
@@ -69,6 +69,11 @@ body {
 
 /* NAVIGATION BAR */
 
+.notification {
+    color: white;
+    height: 60px;
+}
+
 .navbar-top {
     display: flex;
     background-color: #ffffff;
@@ -128,7 +133,7 @@ body {
     color: #0064A4;
     cursor: pointer;
     padding: 6px 13px;
-    width: 35%;
+    width: 37%;
     border: outset #0064A4;
     text-align: middle;
     outline: none;
@@ -164,7 +169,7 @@ body {
     margin-left: 28%;
     margin-top: 40px;
     margin-right: 22%;
-    background-color: #f6f9fa;
+    /*background-color: #f6f9fa;*/
 }
 
 .title-box-create-project {
