@@ -6,6 +6,13 @@ body {
     /* fills whole screen */
 }
 
+.createproject-form-background {
+    /*border-radius: 20px;*/
+    background-color: white;
+    border: 18px solid white;
+    ;
+}
+
 
 /* SIDEBAR */
 
@@ -107,7 +114,8 @@ body {
 
 .createproject-sidebar2 {
     position: fixed;
-    top: 10%;
+    top: 70px;
+    border: 5px solid #f6f9fa;
     bottom: 0;
     left: 80%;
     width: 25%;
@@ -149,6 +157,7 @@ body {
     margin-left: 28%;
     margin-top: 15px;
     margin-right: 22%;
+    background-color: #f6f9fa;
 }
 
 .title-box-create-project {
