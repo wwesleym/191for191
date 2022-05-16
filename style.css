@@ -93,13 +93,14 @@ body {
 
 .navbar-topright {
     width: 100%;
-    height: 60px;
+    height: 68px;
     padding: 15px 15px;
     border-bottom: inset transparent;
     display: inline-block;
     right: 0px;
     position: fixed;
-    /* background-color: #ffffff; */
+    background-color: #ffffff;
+    border-bottom: 1px solid grey;
     /* margin-left: auto; */
 }
 
@@ -114,7 +115,7 @@ body {
 
 .createproject-sidebar2 {
     position: fixed;
-    top: 70px;
+    top: 68px;
     border: 5px solid #f6f9fa;
     bottom: 0;
     left: 80%;
@@ -126,12 +127,12 @@ body {
     background-color: #ffffff;
     color: #0064A4;
     cursor: pointer;
-    padding: 9px 13px;
-    width: 39%;
+    padding: 6px 13px;
+    width: 35%;
     border: outset #0064A4;
     text-align: middle;
     outline: none;
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 8px;
     letter-spacing: 3%;
     white-space: nowrap;
@@ -161,7 +162,7 @@ body {
 
 .main-body {
     margin-left: 28%;
-    margin-top: 15px;
+    margin-top: 40px;
     margin-right: 22%;
     background-color: #f6f9fa;
 }
