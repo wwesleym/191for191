@@ -1,5 +1,6 @@
 package inf117.projects.rest;
 
+import com.codingsprojects.stack.core.result.Result;
 import inf117.projects.model.response.SponsorSearchResponseModel;
 import inf117.projects.repo.entity.Project;
 import inf117.projects.model.response.ProjectNameSearchResponseModel;
@@ -27,7 +28,7 @@ public class ProjectsController {
         Project project = this.repo.projectByProjectName(name);
         ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
         response.setProject(project);
-        response.setResult();
+        response.setResult(Result.NO_RESULT);
 
         return response;
     }
@@ -39,7 +40,7 @@ public class ProjectsController {
         Project project = this.repo.selectProjectId(Id);
         ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
         response.setProject(project);
-        response.setResult();
+        response.setResult(Result.NO_RESULT);
 
         return response;
     }
@@ -51,7 +52,7 @@ public class ProjectsController {
         Sponsor sponsor = this.repo.selectSponsor(name);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
         response.setSponsor(sponsor);
-        response.setResult();
+        response.setResult(Result.NO_RESULT);
 
         return response;
     }
@@ -63,7 +64,7 @@ public class ProjectsController {
         Sponsor sponsor = this.repo.selectSponsorId(Id);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
         response.setSponsor(sponsor);
-        response.setResult();
+        response.setResult(Result.NO_RESULT);
 
         return response;
     }
