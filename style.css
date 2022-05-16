@@ -134,6 +134,9 @@ body {
     font-size: 18px;
     border-radius: 8px;
     letter-spacing: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .savebutton {
@@ -148,6 +151,9 @@ body {
     font-size: 18px;
     border-radius: 8px;
     letter-spacing: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
