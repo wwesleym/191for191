@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <title>191 for 191!</title>
 
 </head>
@@ -69,46 +70,57 @@
             </a>
         </div>
 
-        <div style="display: flex; flex-direction: right; padding-top: 30px;">
+        <div class="projects-dropdown" style="display: flex; flex-direction: right; padding-top: 30px;">
             <div class="projects-body-filters">Filters:</div>
 
-            <div class="projects-dropdown">
+            <span class="projects-dept-dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
-                    Department
+                        <span id="selectedDept">Department</span>
                     </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="#">IN4MATX</a></li>
                     <li><a class="dropdown-item" href="#">COMPSCI</a></li>
-                    <!-- <li><a class="dropdown-item" href="#"></a></li> -->
                 </ul>
-            </div>
+            </span>
 
-            <div class="projects-dropdown">
+            <div class="projects-course-dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
-                    Quarter/Year
+                    <span id="selectedCourseNum">Course</span>
                     </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Spring 2022</a></li>
-                    <li><a class="dropdown-item" href="#">Winter 2022</a></li>
-                    <li><a class="dropdown-item" href="#">Fall 2021</a></li>
-                    <li><a class="dropdown-item" href="#">Spring 2021</a></li>
-                    <li><a class="dropdown-item" href="#">Winter 2021</a></li>
-                    <li><a class="dropdown-item" href="#">Fall 2020</a></li>
+                    <li><a class="dropdown-item" href="#">117</a></li>
+                    <li><a class="dropdown-item" href="#">191</a></li>
                 </ul>
             </div>
 
-            <div class="projects-dropdown">
+            <div class="projects-q-dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
-                    Course
+                    <span id="selectedQuart">Quarter</span>
                     </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">IN4MATX 117</a></li>
-                    <li><a class="dropdown-item" href="#">IN4MATX 191</a></li>
-                    <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+                    <li><a class="dropdown-item" href="#">Fall</a></li>
+                    <li><a class="dropdown-item" href="#">Winter</a></li>
+                    <li><a class="dropdown-item" href="#">Spring</a></li>
+                    <li><a class="dropdown-item" href="#">Summer</a></li>
                 </ul>
             </div>
 
-            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true">
+            <div class="projects-y-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    <span id="selectedYear">Year</span>
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">2022</a></li>
+                    <li><a class="dropdown-item" href="#">2021</a></li>
+                    <li><a class="dropdown-item" href="#">2020</a></li>
+                    <li><a class="dropdown-item" href="#">2019</a></li>
+                    <li><a class="dropdown-item" href="#">2018</a></li>
+                    <li><a class="dropdown-item" href="#">2017</a></li>
+                </ul>
+            </div>
+
+
+            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true" id="submitFilterButton">
                 Submit
             </a>
         </div>
@@ -140,6 +152,39 @@
             }
         });
     }
+
+    // enable submitFilter button when a filter is selected
+    var submitFilterButton = document.getElementById('submitFilterButton');
+
+    // selects option for course department
+    $('.projects-dropdown .projects-dept-dropdown li a').click(function() {
+        $('#selectedDept').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for course number
+    $('.projects-dropdown .projects-course-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedCourseNum').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for quarter
+    $('.projects-dropdown .projects-q-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedQuart').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for year
+    $('.projects-dropdown .projects-y-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedYear').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+
 </script>
 
 </html>

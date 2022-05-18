@@ -271,13 +271,25 @@ body {
     font-size: 20px;
 }
 
-.projects-dropdown {
-    padding-left: 50px;
+.projects-dept-dropdown {
+    padding-left: 5%;
+}
+
+.projects-course-dropdown {
+    padding-left: 5%;
+}
+
+.projects-q-dropdown {
+    padding-left: 5%;
+}
+
+.projects-y-dropdown {
+    padding-left: 5%;
 }
 
 .submitfilterbutton {
     position: absolute;
-    right: 200px;
+    right: 10%;
     background-color: #0064A4;
     color: #ffffff;
     cursor: pointer;
