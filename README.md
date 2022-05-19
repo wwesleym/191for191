@@ -33,7 +33,7 @@ Up to this point we have almost not much to show but will work on later.
 Hopefully we add stuff to the database and get things out of it too.
 
 # Endpoints
-We not doing so hot
+Here is where the endpoints are: [/backend](/backend/README.md)
 
 ## Hello
 Please end my suffering
