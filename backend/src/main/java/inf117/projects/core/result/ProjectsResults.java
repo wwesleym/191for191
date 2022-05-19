@@ -18,7 +18,7 @@ public final class ProjectsResults {
 
     public static final Result NO_PROJECT_WITH_ID_FOUND =
             new Result.Builder()
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .code(2011)
                     .message("No Movie found for the specified ID")
                     .build();
@@ -32,7 +32,7 @@ public final class ProjectsResults {
 
     public static final Result NO_PROJECTS_FOUND_WITHIN_SEARCH =
             new Result.Builder()
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .code(2021)
                     .message("No movies found with the given search parameters")
                     .build();
@@ -46,7 +46,7 @@ public final class ProjectsResults {
 
     public static final Result NO_PROJECTS_WITH_SPONSOR_ID_FOUND =
             new Result.Builder()
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .code(2031)
                     .message("No Movies found with the personId")
                     .build();
@@ -60,7 +60,7 @@ public final class ProjectsResults {
 
     public static final Result NO_SPONSOR_WITH_ID_FOUND =
             new Result.Builder()
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .code(2041)
                     .message("No Person found for the specified ID")
                     .build();
@@ -74,7 +74,7 @@ public final class ProjectsResults {
 
     public static final Result NO_SPONSORS_FOUND_WITHIN_SEARCH =
             new Result.Builder()
-                    .status(HttpStatus.OK)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .code(2051)
                     .message("No Persons found with the given search parameters")
                     .build();
