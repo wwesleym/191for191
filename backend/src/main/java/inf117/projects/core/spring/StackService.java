@@ -1,6 +1,8 @@
-package com.github.klefstad_teaching.cs122b.core.spring;
+package inf117.projects.core.spring;
 
-import com.github.klefstad_teaching.cs122b.core.error.ResultErrorHandler;
+import com.codingsprojects.stack.core.spring.ServiceRequestLogger;
+import com.codingsprojects.stack.core.spring.ServiceWebMvcConfigurer;
+import inf117.projects.core.error.ResultErrorHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;

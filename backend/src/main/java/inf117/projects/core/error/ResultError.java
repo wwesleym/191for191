@@ -1,6 +1,6 @@
 package inf117.projects.core.error;
 
-import com.github.klefstad_teaching.cs122b.core.result.Result;
+import inf117.projects.core.result.Result;
 import inf117.projects.core.base.ResultResponse;;
 
 public final class ResultError extends RuntimeException

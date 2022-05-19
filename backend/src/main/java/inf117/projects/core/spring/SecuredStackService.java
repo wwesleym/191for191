@@ -1,6 +1,7 @@
-package com.github.klefstad_teaching.cs122b.core.spring;
+package inf117.projects.core.spring;
 
-import com.github.klefstad_teaching.cs122b.core.security.JWTAuthenticationFilter;
+import com.codingsprojects.stack.core.spring.StackService;
+import inf117.projects.core.security.JWTAuthenticationFilter;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
