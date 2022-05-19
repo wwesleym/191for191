@@ -1,5 +1,7 @@
 package inf117.projects.repo;
 
+import inf117.projects.core.error.ResultError;
+import inf117.projects.core.result.ProjectsResults;
 import inf117.projects.repo.entity.Project;
 import inf117.projects.repo.entity.type.ProjectState;
 import inf117.projects.repo.entity.Sponsor;
@@ -25,24 +27,28 @@ public class ProjectRepo {
             "";
 
     public Project projectByProjectName(String name) {
-        return this.template.queryForObject(
-                "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
-                        "FROM `191for191`.project p " +
-                        "JOIN `191for191`.sponsor s on s.id = p.sponsor_id " +
-                        "WHERE p.name LIKE :name ",
-                new MapSqlParameterSource()
-                        .addValue("name", '%'+name+'%', Types.VARCHAR),
-                (rs, rowNum) -> new Project()
-                        .setId(rs.getInt("p.id"))
-                        .setName(rs.getString("p.name"))
-                        .setTeamSize(rs.getInt("p.team_size"))
-                        .setSponsorName(rs.getString("s.name"))
-                        .setDescription(rs.getString("p.project_description"))
-                        .setVideo(rs.getString("p.pitch_video"))
-                        .setImage(rs.getString("p.image"))
-                        .setState(ProjectState.fromString(rs.getString("p.state")))
-                        .setCourseId(rs.getInt("p.course_instance_id"))
-        );
+        try {
+            return this.template.queryForObject(
+                    "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+                            "FROM `191for191`.project p " +
+                            "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id " +
+                            "WHERE p.name LIKE :name ",
+                    new MapSqlParameterSource()
+                            .addValue("name", '%' + name + '%', Types.VARCHAR),
+                    (rs, rowNum) -> new Project()
+                            .setId(rs.getInt("p.id"))
+                            .setName(rs.getString("p.name"))
+                            .setTeamSize(rs.getInt("p.team_size"))
+                            .setSponsorName(rs.getString("s.name"))
+                            .setDescription(rs.getString("p.project_description"))
+                            .setVideo(rs.getString("p.pitch_video"))
+                            .setImage(rs.getString("p.image"))
+                            .setState(ProjectState.fromString(rs.getString("p.state")))
+                            .setCourseId(rs.getInt("p.course_instance_id"))
+            );
+        } catch (DataAccessException e) {
+            throw new ResultError(ProjectsResults.NO_PROJECTS_FOUND_WITHIN_SEARCH);
+        }
     }
 
     public void insertProject(Project project) {
@@ -99,7 +105,7 @@ public class ProjectRepo {
                                     .setWebsite(rs.getString("s.website"))
             );
         } catch (DataAccessException e) {
-            return null;
+            throw new ResultError(ProjectsResults.NO_SPONSORS_FOUND_WITHIN_SEARCH);
         }
     }
 
@@ -113,16 +119,16 @@ public class ProjectRepo {
         );
     }
 
-    public Project selectProjectId(Integer Id)
+    public Project selectProjectId(Integer id)
     {
         try {
             return this.template.queryForObject(
                     "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
                             "FROM `191for191`.project p " +
                             "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id " +
-                            "WHERE p.id LIKE :Id ",
+                            "WHERE p.id = :id ",
                     new MapSqlParameterSource()
-                            .addValue("Id", '%' + Id + '%', Types.VARCHAR),
+                            .addValue("id", id, Types.INTEGER),
                     (rs, rowNum) -> new Project()
                             .setId(rs.getInt("p.id"))
                             .setName(rs.getString("p.name"))
@@ -135,19 +141,19 @@ public class ProjectRepo {
                             .setCourseId(rs.getInt("p.course_instance_id"))
             );
         } catch (DataAccessException e) {
-            return null;
+            throw new ResultError(ProjectsResults.NO_PROJECT_WITH_ID_FOUND);
         }
     }
 
-    public Sponsor selectSponsorId(Integer Id)
+    public Sponsor selectSponsorId(Integer id)
     {
         try {
             return this.template.queryForObject(
                     "SELECT s.id, s.name " +
                             "FROM `191for191`.sponsor s " +
-                            "WHERE s.id=:Id ",
+                            "WHERE s.id=:id ",
                     new MapSqlParameterSource()
-                            .addValue("Id", Id, Types.INTEGER),
+                            .addValue("id", id, Types.INTEGER),
                     (rs, rowNum) ->
                             new Sponsor()
                                     .setId(rs.getInt("s.id"))
@@ -155,7 +161,7 @@ public class ProjectRepo {
                                     .setWebsite(rs.getString("s.website"))
             );
         } catch (DataAccessException e) {
-            return null;
+            throw new ResultError(ProjectsResults.NO_SPONSOR_WITH_ID_FOUND);
         }
     }
 }
