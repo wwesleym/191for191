@@ -5,7 +5,7 @@ import inf117.projects.repo.entity.type.CourseTerm;
 public class CourseInstance {
     private int id;
     private String department;
-    private int number;
+    private String number;
     private String professorName;
     private CourseTerm courseTerm;
     private int courseYear;
@@ -28,11 +28,11 @@ public class CourseInstance {
         return this;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public CourseInstance setNumber(int number) {
+    public CourseInstance setNumber(String number) {
         this.number = number;
         return this;
     }
