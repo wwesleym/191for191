@@ -41,6 +41,7 @@ body {
 .sidebar .nav-link.active {
     color: #000;
     background-color: #eeec67;
+    border-radius: 10px;
 }
 
 .sidebar .nav-link {
@@ -188,6 +189,8 @@ body {
 }
 
 .collapsible {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     background-color: #edf5fa;
     color: #1a609e;
     cursor: pointer;
@@ -219,6 +222,13 @@ body {
     background-color: #e8f3f8;
 }
 
+.active,
+.collapsible:link {
+    background-color: #e8f3f8;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .content {
     padding: 18px;
     display: active;
@@ -236,16 +246,36 @@ body {
 
 /* create project - course & quarter/year dropdown */
 
+.createproject-descrip-dropdown {
+    background-color: #e8f3f8;
+    z-index: 12;
+    padding: 18px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .createproject-course-dropdown {
     background-color: #e8f3f8;
     z-index: 12;
     padding: 18px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .createproject-qy-dropdown {
     background-color: #e8f3f8;
     z-index: 12;
     padding: 18px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.createproject-link-dropdown {
+    background-color: #e8f3f8;
+    z-index: 12;
+    padding: 18px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 
