@@ -2,6 +2,11 @@
 
 # Endpoints
 
+1. [GET: Project Search By Name](#project-search-by-name)
+2. [GET: Project Search By Id](#project-search-by-id)
+3. [GET: Sponsor Search By Name](#sponsor-search-by-name)
+4. [GET: Sponsor Search By Id](#sponsor-search-by-id)
+
 ## Project Search By Name
 Returns a movie with detailed information that contains the given <code>name</code>.
 
