@@ -7,7 +7,7 @@ Returns a movie with detailed information that contains the given <code>name</co
 
 ### Path
 ```http
-POST /projects/search/name
+GET /projects/search/name
 ```
 
 ### API
@@ -101,7 +101,7 @@ Returns a movie with detailed information that contains the given <code>id</code
 
 ### Path
 ```http
-POST /projects/search/id
+GET /projects/search/id
 ```
 
 ### API
@@ -195,7 +195,7 @@ Returns a sponsor with basic information that contains the given <code>name</cod
 
 ### Path
 ```http
-POST /sponsor/search/name
+GET /sponsor/search/name
 ```
 
 ### API
@@ -277,7 +277,7 @@ Returns a sponsor with basic information that contains the given <code>id</code>
 
 ### Path
 ```http
-POST /sponsor/search/id
+GET /sponsor/search/id
 ```
 
 ### API
