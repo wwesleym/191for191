@@ -1,9 +1,11 @@
-package com.github.klefstad_teaching.cs122b.core.spring;
+package inf117.projects.core.spring;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
+@Configuration
+@EnableWebMvc
 public class ServiceWebMvcConfigurer implements WebMvcConfigurer
 {
     private final List<String> origins;
@@ -19,7 +24,7 @@ public class ServiceWebMvcConfigurer implements WebMvcConfigurer
     public ServiceWebMvcConfigurer()
     {
         this.origins = Collections.singletonList(
-            "http://localhost:3000"
+            "http://localhost:8082"
         );
 
         this.methods = new ArrayList<>(Arrays.asList(
@@ -35,7 +40,7 @@ public class ServiceWebMvcConfigurer implements WebMvcConfigurer
     {
         registry
             .addMapping("/**")
-            .allowedOrigins(origins.toArray(new String[0]))
+            .allowedOriginPatterns("*")
             .allowedMethods(methods.toArray(new String[0]))
             .allowedHeaders("*")
             .allowCredentials(true);
