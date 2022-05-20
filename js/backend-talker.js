@@ -1,13 +1,14 @@
 const options = {
-    method: "POST",
+    method: "GET",
     baseURL: "http://localhost:8082",
-    url: "/sample/search",  // for endpoints
-    data: { // where to set parameters for each endpoint
-        "name": "191"
+    url: "/projects/search/id",  // for endpoints
+    data: {
+        "id": 1
     }
 };
 
 const url = new URL(options.baseURL+options.url);
+url.search = new URLSearchParams(options.data).toString();
 
 const headers = {
     "Accept": "application/json",
@@ -18,15 +19,11 @@ let searchButton = document.getElementById("search");   // change to id for sear
 let displayDiv = document.getElementById("mypanel");    // change to div to display
 
 searchButton.onclick = function() {
-    // console.log(headers);
-    fetch(url.toString(), {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(options.data)
-    })
+    console.log(url);
+    fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(JSON.stringify(data.project, null, 4));
+            console.log(JSON.stringify(data, null, 4));
             let text = "<table><thead><tr>" +
                 "<th>name</th>" +
                 "<th>sponsor</th>" +
@@ -42,5 +39,9 @@ searchButton.onclick = function() {
                 "<td>" + data.project.courseId + "</td>" +
                 "</tr></tbody></table>";
             displayDiv.innerHTML = text;
+        })
+        .catch(error => {
+            alert(error);
+            console.error(error);
         })
 };
