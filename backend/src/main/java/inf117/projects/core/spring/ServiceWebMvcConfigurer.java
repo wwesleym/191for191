@@ -1,4 +1,4 @@
-package com.github.klefstad_teaching.cs122b.core.spring;
+package inf117.projects.core.spring;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;

@@ -1,4 +1,4 @@
-package com.github.klefstad_teaching.cs122b.core.spring;
+package inf117.projects.core.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
