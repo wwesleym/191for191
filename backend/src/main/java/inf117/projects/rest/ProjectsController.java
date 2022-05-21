@@ -21,11 +21,11 @@ public class ProjectsController {
         this.repo = repo;
     }
 
-    @PostMapping("/projects/search/name/")
+    @GetMapping("/projects/search/name/")
     ResponseEntity<ProjectNameSearchResponseModel> ProjectSearchByName(
-            @RequestBody ProjectModelRequest request)
+            @RequestParam String name)
     {
-        String name = request.getName();
+//        String name = request.getName();
 
         Project project = this.repo.projectByProjectName(name);
         ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
@@ -35,11 +35,11 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @PostMapping("/projects/search/id/")
+    @GetMapping("/projects/search/id/")
     ResponseEntity<ProjectNameSearchResponseModel> ProjectSearchById(
-            @RequestBody ProjectModelRequest request)
+            @RequestParam Integer id)
     {
-        Integer id = request.getId();
+//        Integer id = request.getId();
 
         Project project = this.repo.selectProjectId(id);
         ProjectNameSearchResponseModel response = new ProjectNameSearchResponseModel();
@@ -49,11 +49,11 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @PostMapping("/sponsor/search/name/")
+    @GetMapping("/sponsor/search/name/")
     ResponseEntity<SponsorSearchResponseModel> SponsorSearchByName(
-            @RequestBody SponsorModelRequest request)
+            @RequestParam String name)
     {
-        String name = request.getName();
+//        String name = request.getName();
 
         Sponsor sponsor = this.repo.selectSponsor(name);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
@@ -63,11 +63,11 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @PostMapping("/sponsor/search/id/")
+    @GetMapping("/sponsor/search/id/")
     ResponseEntity<SponsorSearchResponseModel> SponsorSearchById(
-            @RequestBody SponsorModelRequest request)
+            @RequestParam Integer id)
     {
-        Integer id = request.getId();
+//        Integer id = request.getId();
 
         Sponsor sponsor = this.repo.selectSponsorId(id);
         SponsorSearchResponseModel response = new SponsorSearchResponseModel();
