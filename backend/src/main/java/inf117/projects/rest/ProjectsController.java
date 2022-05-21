@@ -21,7 +21,7 @@ public class ProjectsController {
         this.repo = repo;
     }
 
-    @GetMapping("/projects/search/name/")
+    @GetMapping("/projects/search/name")
     ResponseEntity<ProjectNameSearchResponseModel> ProjectSearchByName(
             @RequestParam String name)
     {
@@ -35,7 +35,7 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @GetMapping("/projects/search/id/")
+    @GetMapping("/projects/search/id")
     ResponseEntity<ProjectNameSearchResponseModel> ProjectSearchById(
             @RequestParam Integer id)
     {
@@ -49,7 +49,7 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @GetMapping("/sponsor/search/name/")
+    @GetMapping("/sponsor/search/name")
     ResponseEntity<SponsorSearchResponseModel> SponsorSearchByName(
             @RequestParam String name)
     {
@@ -63,7 +63,7 @@ public class ProjectsController {
         return response.toResponse();
     }
 
-    @GetMapping("/sponsor/search/id/")
+    @GetMapping("/sponsor/search/id")
     ResponseEntity<SponsorSearchResponseModel> SponsorSearchById(
             @RequestParam Integer id)
     {
