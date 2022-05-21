@@ -343,7 +343,7 @@
     <div class="createproject-sidebar2">
         <nav id="sidebarMenu">
             <ul>
-                <button type="button" class="previewbutton"> 
+                <button type="button" class="previewbutton" onclick="previewAlert()"> 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
@@ -353,16 +353,18 @@
                 <!-- <input type="submit" name="Submit" id="Submit" value="Click me to Contact"  class="btn btn-primary btn-lg btn-block"> -->
                 <input type="submit" name="Submit" id="Submit" value="Save" class="btn btn-primary savebutton" onclick="saveResult()">
                 <p></p>
+
                 <p>Sponsor Name </p>
                 <input name="SponsorName" id="SponsorName" class="title-box" type="text" placeholder="">
                 <!-- this line just makes u download the file? -->
-                <a class="nav-link" href="addsponsor.php">
-                    <button type="button" class="replacebutton">+ Sponsor</button></a>
-
+                <!-- <a class="nav-link" href="addsponsor.php">
+                    <button type="button" class="replacebutton">+ Sponsor</button></a> -->
                 <p></p>
+
                 <p>Team Members</p>
                 <input name="TeamMem" id="TeamMem" class="title-box" type="text" placeholder="">
                 <p></p>
+                
                 <p>Tags</p>
                 <input name="ProjTags" id="ProjTags" class="title-box" type="text" placeholder="">
             </ul>
@@ -405,11 +407,6 @@
         $('#selectedCourseNum').text($(this).text());
     });
 
-    // // selects option for quarter/year
-    // $('.createproject-qy-dropdown .dropdown-menu li a').click(function() {
-    //     $('#selectedQY').text($(this).text());
-    // });
-
     // selects option for quarter
     $('.createproject-qy-dropdown .q-dropdown .dropdown-menu li a').click(function() {
         $('#selectedQuart').text($(this).text());
@@ -420,31 +417,70 @@
         $('#selectedYear').text($(this).text());
     });
 
+    // displays preview - user inputs
+    function previewAlert() {
+        var titleValue = document.getElementById("titleInput").value;
+        var descValue = document.getElementById("ProjectDesc").value;
+        var linkValue = document.getElementById("Linkss").value;
+        var deptValue = $('#selectedDept').text();
+        var courseNumValue = $('#selectedCourseNum').text();
+        var quarterValue = $('#selectedQuart').text();
+        var yearValue = $('#selectedYear').text();
+        var sponsorValue = document.getElementById("SponsorName").value;
+        var teamMemValue = document.getElementById("TeamMem").value;
+        var tagsValue = document.getElementById("ProjTags").value;
+
+        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" || 
+        quarterValue == "Select Quarter" || yearValue == "Select Year")
+        {
+            deptValue = "";
+            courseNumValue = "";
+            quarterValue = "";
+            yearValue = "";
+        }
+
+        alert_str = "";
+        alert_str += "TITLE: " + titleValue + "\n";
+        alert_str += "PROJECT DESCRIPTION: " + descValue + "\n";
+        alert_str += "COURSE DEPARTMENT: " + deptValue + "\n";
+        alert_str += "COURSE NUMBER: " + courseNumValue + "\n";
+        alert_str += "QUARTER: " + quarterValue + "\n";
+        alert_str += "YEAR: " + yearValue + "\n";
+        alert_str += "LINKS: " + linkValue + "\n";
+        alert_str += "SPONSOR: " + sponsorValue + "\n";
+        alert_str += "TEAM MEMBERS: " + teamMemValue + "\n";
+        alert_str += "PROJECT TAGS: " + tagsValue + "\n";
+        alert(alert_str);
+    }
+
     // save project 
     function saveResult() {
         var titleValue = document.getElementById("titleInput").value;
         var descValue = document.getElementById("ProjectDesc").value;
         var linkValue = document.getElementById("Linkss").value;
-        var courseValue = $('#selectedCourse').text();
+        var deptValue = $('#selectedDept').text();
+        var courseNumValue = $('#selectedCourseNum').text();
         var quarterValue = $('#selectedQuart').text();
         var yearValue = $('#selectedYear').text();
 
-        // parse course department and course number
-        let substrings2 = courseValue.split(' ');
-        var courseDeptValue = substrings2[0];
-        var courseNumValue = substrings2[1];
-
-        if (courseValue == "Select Course" || quarterValue == "Select Quarter" || yearValue == "Select Year")
-            console.log("Please select an option");
-        else {
-            // console.log(titleValue + " " + descValue + " " + linkValue + " " + courseValue + " " + quarterYearValue);
-            console.log(quarterValue + yearValue);
+        if (titleValue == "") {
+            alert("Please enter a title");
+            return;
         }
+
+        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" || 
+        quarterValue == "Select Quarter" || yearValue == "Select Year")
+        {
+            alert("Please select an option for Department, Course Number, Quarter, and Year");
+            return;
+        }
+
+        if (sponsorValue == "" || teamMemValue == "") {
+            alert("Please enter the Sponsor name and the Team Members")
+            return;
+        }
+        
         window.location.replace('projects.html')
-        //   if (!isNaN(numberValue))
-        //      console.log("The value=" + parseInt(numberValue));
-        //   else
-        //      console.log("Please enter the integer value..");
     }
 </script>
 
