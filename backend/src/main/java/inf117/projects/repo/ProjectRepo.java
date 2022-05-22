@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.sql.Types;
+import java.util.List;
 
 @Component
 public class ProjectRepo {
@@ -25,8 +26,14 @@ public class ProjectRepo {
     }
 
     //language=sql
-    private static String PROJECT_WITH_DEFAULT =
-            "";
+    private static String PROJECT_SEARCH_WITH_DEFAULT =
+            "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+            "FROM `191for191`.project p " +
+            "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id ";
+
+    public List<Project> projectSearch(ProjectSearchRequestModel request) {
+        return null;
+    }
 
     public Project projectByProjectName(String name) {
         try {
