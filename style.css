@@ -175,6 +175,11 @@ body {
 
 .title-box-create-project {
     margin-left: 2%;
+    text-align: center;
+}
+
+.title-box-cpage {
+    width: 100%;
 }
 
 .main-media-body {

@@ -74,7 +74,7 @@
             <!-- <form name="CreateProj" class="needs-validation" method="post" action="createproject.php"> -->
 
             <div class="title-box-create-project">
-                <input class="title-box" type="text" placeholder="Title" id="titleInput" name="title" size="70">
+                <input class="title-box-cpage" type="text" placeholder="Title" id="titleInput" name="title">
             </div>
             <p> </p>
 
@@ -364,7 +364,7 @@
                 <p>Team Members</p>
                 <input name="TeamMem" id="TeamMem" class="title-box" type="text" placeholder="">
                 <p></p>
-                
+
                 <p>Tags</p>
                 <input name="ProjTags" id="ProjTags" class="title-box" type="text" placeholder="">
             </ul>
@@ -430,9 +430,8 @@
         var teamMemValue = document.getElementById("TeamMem").value;
         var tagsValue = document.getElementById("ProjTags").value;
 
-        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" || 
-        quarterValue == "Select Quarter" || yearValue == "Select Year")
-        {
+        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" ||
+            quarterValue == "Select Quarter" || yearValue == "Select Year") {
             deptValue = "";
             courseNumValue = "";
             quarterValue = "";
@@ -468,9 +467,8 @@
             return;
         }
 
-        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" || 
-        quarterValue == "Select Quarter" || yearValue == "Select Year")
-        {
+        if (deptValue == "Select Department" || courseNumValue == "Select Course Number" ||
+            quarterValue == "Select Quarter" || yearValue == "Select Year") {
             alert("Please select an option for Department, Course Number, Quarter, and Year");
             return;
         }
@@ -479,7 +477,7 @@
             alert("Please enter the Sponsor name and the Team Members")
             return;
         }
-        
+
         window.location.replace('projects.html')
     }
 </script>
