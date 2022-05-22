@@ -460,6 +460,9 @@
         var courseNumValue = $('#selectedCourseNum').text();
         var quarterValue = $('#selectedQuart').text();
         var yearValue = $('#selectedYear').text();
+        var sponsorValue = document.getElementById("SponsorName").value;
+        var teamMemValue = document.getElementById("TeamMem").value;
+        var tagsValue = document.getElementById("ProjTags").value;
 
         if (titleValue == "") {
             alert("Please enter a title");
@@ -473,7 +476,7 @@
         }
 
         if (sponsorValue == "" || teamMemValue == "") {
-            alert("Please enter the Sponsor name and the Team Members")
+            alert("Please enter the Sponsor Name and the Team Members")
             return;
         }
 
