@@ -53,11 +53,11 @@ CREATE TABLE `191for191`.course_instance(
 
 CREATE TABLE `191for191`.project(
 	id INT NOT NULL PRIMARY KEY,
-	name VARCHAR(50) NOT NULL,
-	team_size INT NOT NULL,
+	name VARCHAR(50) NOT NULL UNIQUE,
+	team_size INT,
 	sponsor_id INT NOT NULL,
 	project_description VARCHAR(500) NOT NULL,
-	pitch_video VARCHAR(1024) NOT NULL,
+	pitch_video VARCHAR(1024),
 	image VARCHAR(1024),
 	state ENUM('COMPLETED', 'IN_PROGRESS', 'NOT_STARTED'),
 	course_instance_id INT,
