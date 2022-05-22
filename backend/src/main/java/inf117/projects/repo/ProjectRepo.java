@@ -2,7 +2,9 @@ package inf117.projects.repo;
 
 import inf117.projects.core.error.ResultError;
 import inf117.projects.core.result.ProjectsResults;
+import inf117.projects.model.request.ProjectSearchRequestModel;
 import inf117.projects.repo.entity.Project;
+import inf117.projects.repo.entity.type.CourseTerm;
 import inf117.projects.repo.entity.type.ProjectState;
 import inf117.projects.repo.entity.Sponsor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class ProjectRepo {
     public Project projectByProjectName(String name) {
         try {
             return this.template.queryForObject(
-                    "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+                    "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id, p.year, p.term " +
                             "FROM `191for191`.project p " +
                             "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id " +
                             "WHERE p.name LIKE :name ",
@@ -45,6 +47,8 @@ public class ProjectRepo {
                             .setImage(rs.getString("p.image"))
                             .setState(ProjectState.fromString(rs.getString("p.state")))
                             .setCourseId(rs.getInt("p.course_instance_id"))
+                            .setYear(rs.getInt("p.year"))
+                            .setTerm(CourseTerm.fromString(rs.getString("p.term")))
             );
         } catch (DataAccessException e) {
             throw new ResultError(ProjectsResults.NO_PROJECTS_FOUND_WITHIN_SEARCH);
@@ -123,7 +127,7 @@ public class ProjectRepo {
     {
         try {
             return this.template.queryForObject(
-                    "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+                    "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id, p.year, p.term " +
                             "FROM `191for191`.project p " +
                             "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id " +
                             "WHERE p.id = :id ",
@@ -139,6 +143,8 @@ public class ProjectRepo {
                             .setImage(rs.getString("p.image"))
                             .setState(ProjectState.fromString(rs.getString("p.state")))
                             .setCourseId(rs.getInt("p.course_instance_id"))
+                            .setYear(rs.getInt("p.year"))
+                            .setTerm(CourseTerm.fromString(rs.getString("p.term")))
             );
         } catch (DataAccessException e) {
             throw new ResultError(ProjectsResults.NO_PROJECT_WITH_ID_FOUND);
