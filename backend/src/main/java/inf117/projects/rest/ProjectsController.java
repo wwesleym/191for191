@@ -64,7 +64,8 @@ public class ProjectsController {
     ) {
         // Validate course instance
         CourseInstance courseInstance = new CourseInstance()
-                .setId(request.getCourseId())
+                .setDepartment(request.getCourseDepartment())
+                .setNumber(request.getCourseNumber())
                 .setCourseTerm(CourseTerm.fromString(request.getTerm()))
                 .setCourseYear(request.getYear());
         this.validate.validateCourseInstance(courseInstance);
@@ -85,7 +86,7 @@ public class ProjectsController {
                 .setVideo(request.getVideo())
                 .setImage(request.getImage())
                 .setState(ProjectState.fromString(request.getState()))
-                .setCourseId(request.getCourseId())
+                .setCourseId(courseInstance.getId())
                 .setYear(request.getYear())
                 .setTerm(CourseTerm.fromString(request.getTerm()));
 

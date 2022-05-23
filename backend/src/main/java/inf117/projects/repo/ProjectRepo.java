@@ -8,6 +8,8 @@ import inf117.projects.repo.entity.Project;
 import inf117.projects.repo.entity.type.CourseTerm;
 import inf117.projects.repo.entity.type.ProjectState;
 import inf117.projects.repo.entity.Sponsor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -20,6 +22,8 @@ import java.util.List;
 @Component
 public class ProjectRepo {
     private NamedParameterJdbcTemplate template;
+
+    private final Logger LOG = LoggerFactory.getLogger(ProjectRepo.class);
 
     @Autowired
     public ProjectRepo(NamedParameterJdbcTemplate template) {
@@ -192,13 +196,14 @@ public class ProjectRepo {
 
     public CourseInstance selectCourseInstance(CourseInstance courseInstance) {
         try {
-            return this.template.queryForObject(
-                    "SELECT ci.id, ci.year, ci.term, ci.department, ci.number, p.name_first, p.name_first, p.name_middle, p.name_last " +
+            List<CourseInstance> courses = this.template.query(
+                    "SELECT ci.id, ci.year, ci.term, ci.department, ci.number, p.name_first, p.name_middle, p.name_last " +
                             "FROM `191for191`.course_instance ci " +
                             "JOIN `191for191`.person p ON p.id = ci.professor_id " +
-                            "WHERE ci.id=:id AND ci.year=:year AND ci.term=:term;",
+                            "WHERE ci.department=:department AND ci.number=:number AND ci.year=:year AND ci.term=:term;",
                     new MapSqlParameterSource()
-                            .addValue("id", courseInstance.getId(), Types.INTEGER)
+                            .addValue("department", courseInstance.getDepartment(), Types.VARCHAR)
+                            .addValue("number", courseInstance.getNumber(), Types.VARCHAR)
                             .addValue("year", courseInstance.getCourseYear(), Types.INTEGER)
                             .addValue("term", courseInstance.getCourseTerm().toString(), Types.VARCHAR),
                     (rs, rowNum) -> {
@@ -217,6 +222,7 @@ public class ProjectRepo {
                         return course.setProfessorName(professorName);
                     }
             );
+            return courses.get(0);
         } catch (DataAccessException e) {
             throw new ResultError(ProjectsResults.COURSE_NOT_FOUND);
         }

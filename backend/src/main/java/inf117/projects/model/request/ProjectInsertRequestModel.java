@@ -8,7 +8,8 @@ public class ProjectInsertRequestModel {
     private String video;
     private String image;
     private String state;
-    private Integer courseId;
+    private String courseDepartment;
+    private String courseNumber;
     private Integer year;
     private String term;
 
@@ -75,12 +76,21 @@ public class ProjectInsertRequestModel {
         return this;
     }
 
-    public Integer getCourseId() {
-        return courseId;
+    public String getCourseDepartment() {
+        return courseDepartment;
     }
 
-    public ProjectInsertRequestModel setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public ProjectInsertRequestModel setCourseDepartment(String courseDepartment) {
+        this.courseDepartment = courseDepartment;
+        return this;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+
+    public ProjectInsertRequestModel setCourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
         return this;
     }
 

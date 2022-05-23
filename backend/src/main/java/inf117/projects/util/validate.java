@@ -13,7 +13,8 @@ public final class Validate {
     public void validateSearchSponsorName(String name){return;}
     public void validateSearchSponsorId(Integer Id){return;}
     public void validateCourseInstance(CourseInstance courseInstance) {
-        if ((courseInstance.getId() == 0) ||
+        if ((courseInstance.getDepartment() == null) ||
+                (courseInstance.getNumber() == null) ||
                 (courseInstance.getCourseTerm() == null) ||
                 (courseInstance.getCourseYear() == 0)) {
             throw new ResultError(ProjectsResults.COURSE_NOT_FOUND);
