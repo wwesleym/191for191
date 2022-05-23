@@ -49,7 +49,7 @@ result: Result
     code: Integer
     message: String
 project: Project
-    id: Integer
+    id: Long
     name: String
     teamSize: Integer
     sponsorName: String
@@ -122,7 +122,7 @@ GET /projects/search/id
     </tr>
     <tr>
     <td colspan="2" align="left"><pre lang="yml">
-id: Integer</pre></td>
+id: Long</pre></td>
     <td align="left"><pre lang="json">
 {
     "id": 1
@@ -143,7 +143,7 @@ result: Result
     code: Integer
     message: String
 project: Project
-    id: Integer
+    id: Long
     name: String
     teamSize: Integer
     sponsorName: String
@@ -237,7 +237,7 @@ result: Result
     code: Integer
     message: String
 sponsor: Sponsor
-    id: Integer
+    id: Long
     name: String
     website: String</pre></td>
     <td align="left"><pre lang="json">
@@ -298,7 +298,7 @@ GET /sponsor/search/id
     </tr>
     <tr>
     <td colspan="2" align="left"><pre lang="yml">
-id: Integer</pre></td>
+id: Long</pre></td>
     <td align="left"><pre lang="json">
 {
     "id": 1
@@ -319,7 +319,7 @@ result: Result
     code: Integer
     message: String
 sponsor: Sponsor
-    id: Integer
+    id: Long
     name: String
     website: String</pre></td>
     <td align="left"><pre lang="json">
