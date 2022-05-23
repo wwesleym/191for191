@@ -130,7 +130,7 @@
             </div>
 
 
-            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true" id="submitFilterButton">
+            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true" id="submitFilterButton" onclick="submitFilter()">
                 Submit
             </a>
         </div>
@@ -194,9 +194,38 @@
         submitFilterButton.removeAttribute('aria-disabled');
     });
 
+    function submitFilter() {
+        var deptValue = $('#selectedDept').text();
+        var courseNumValue = $('#selectedCourseNum').text();
+        var quarterValue = $('#selectedQuart').text();
+        var yearValue = $('#selectedYear').text();
+        
+        // flags are true when the filter is selected
+        var deptFlag = false;
+        var courseNumFlag = false;
+        var quarterFlag = false;
+        var yearFlag = false;
+
+        if (deptValue != "Department") {
+            deptFlag = true;
+        }
+        if (courseNumValue != "Course") {
+            courseNumFlag = true;
+        }
+        if (quarterValue != "Quarter") {
+            quarterFlag = true;
+        }
+        if (yearValue != "Year") {
+            yearFlag = true;
+        }
+        
+        // search thru database when filter is selected (flag is true)
+
+    }
+
 
 </script>
 
-<script type="text/javascript" src="js/backend-talker.js"></script>
+<!-- <script type="text/javascript" src="js/backend-talker.js"></script> -->
 
 </html>
