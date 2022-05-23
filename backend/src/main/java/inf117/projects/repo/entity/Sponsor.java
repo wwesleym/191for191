@@ -1,15 +1,15 @@
 package inf117.projects.repo.entity;
 
 public class Sponsor {
-    private int id;
+    private Long id;
     private String name;
     private String website;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public Sponsor setId(int id) {
+    public Sponsor setId(Long id) {
         this.id = id;
         return this;
     }

@@ -1,44 +1,31 @@
-package inf117.projects.repo.entity;
+package inf117.projects.model.request;
 
-import inf117.projects.repo.entity.type.CourseTerm;
-import inf117.projects.repo.entity.type.ProjectState;
-
-public class Project {
-    private Long id;
+public class ProjectInsertRequestModel {
     private String name;
     private Integer teamSize;
     private String sponsorName;
     private String description;
     private String video;
     private String image;
-    private ProjectState state;
+    private String state;
     private Integer courseId;
     private Integer year;
-    private CourseTerm term;
-
-    public Long getId() {
-        return id;
-    }
-
-    public Project setId(Long id) {
-        this.id = id;
-        return this;
-    }
+    private String term;
 
     public String getName() {
         return name;
     }
 
-    public Project setName(String name) {
+    public ProjectInsertRequestModel setName(String name) {
         this.name = name;
         return this;
     }
 
-    public int getTeamSize() {
+    public Integer getTeamSize() {
         return teamSize;
     }
 
-    public Project setTeamSize(int teamSize) {
+    public ProjectInsertRequestModel setTeamSize(Integer teamSize) {
         this.teamSize = teamSize;
         return this;
     }
@@ -47,7 +34,7 @@ public class Project {
         return sponsorName;
     }
 
-    public Project setSponsorName(String sponsorName) {
+    public ProjectInsertRequestModel setSponsorName(String sponsorName) {
         this.sponsorName = sponsorName;
         return this;
     }
@@ -56,7 +43,7 @@ public class Project {
         return description;
     }
 
-    public Project setDescription(String description) {
+    public ProjectInsertRequestModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -65,7 +52,7 @@ public class Project {
         return video;
     }
 
-    public Project setVideo(String video) {
+    public ProjectInsertRequestModel setVideo(String video) {
         this.video = video;
         return this;
     }
@@ -74,43 +61,43 @@ public class Project {
         return image;
     }
 
-    public Project setImage(String image) {
+    public ProjectInsertRequestModel setImage(String image) {
         this.image = image;
         return this;
     }
 
-    public ProjectState getState() {
+    public String getState() {
         return state;
     }
 
-    public Project setState(ProjectState state) {
+    public ProjectInsertRequestModel setState(String state) {
         this.state = state;
         return this;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public Project setCourseId(int courseId) {
+    public ProjectInsertRequestModel setCourseId(Integer courseId) {
         this.courseId = courseId;
         return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public Project setYear(int year) {
+    public ProjectInsertRequestModel setYear(Integer year) {
         this.year = year;
         return this;
     }
 
-    public CourseTerm getTerm() {
+    public String getTerm() {
         return term;
     }
 
-    public Project setTerm(CourseTerm term) {
+    public ProjectInsertRequestModel setTerm(String term) {
         this.term = term;
         return this;
     }
