@@ -66,11 +66,15 @@ public class ProjectRepo {
     public void insertProject(Project project) {
         // Check if sponsor name in database
         Sponsor sponsor;
-        if (project.getSponsorName() != null) {
-            sponsor = selectSponsor(project.getSponsorName());
-        } else {
-            sponsor = null;
-        }
+            try {
+                if (project.getSponsorName() != null) {
+                    sponsor = this.selectSponsor(project.getSponsorName());
+                } else {
+                    sponsor = null;
+                }
+            } catch (DataAccessException e) {
+                sponsor = null;
+            }
 
         // Insert new sponsor if sponsor name not in database
         if (sponsor == null) {
