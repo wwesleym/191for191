@@ -36,7 +36,8 @@ description: String
 video: String
 image: String
 state: String
-courseId: Integer
+courseDepartment: String
+courseNumber: String
 year: Integer
 term: String</pre></td>
     <td align="left"><pre lang="json">
