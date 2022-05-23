@@ -16,7 +16,8 @@ public final class ResultMap
                       BasicResults.toStream(),
                       IDMResults.toStream(),
                       MoviesResults.toStream(),
-                      BillingResults.toStream()
+                      BillingResults.toStream(),
+                      ProjectsResults.toStream()
                   )
                   .flatMap(r -> r)
                   .collect(

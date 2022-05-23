@@ -9,6 +9,41 @@ public final class ProjectsResults {
         throw new AssertionError("No Instances of Results can be created");
     }
 
+    public static final Result INVALID_ORDER_BY =
+            new Result.Builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .code(2000)
+                    .message("Invalid 'orderBy' value given")
+                    .build();
+
+    public static final Result INVALID_DIRECTION =
+            new Result.Builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .code(2001)
+                    .message("Invalid 'direction' value given")
+                    .build();
+
+    public static final Result INVALID_LIMIT =
+            new Result.Builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .code(2002)
+                    .message("Invalid 'limit' value given")
+                    .build();
+
+    public static final Result INVALID_PAGE =
+            new Result.Builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .code(2003)
+                    .message("Invalid 'offset' value given")
+                    .build();
+
+    public static final Result COURSE_NOT_FOUND =
+            new Result.Builder()
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .code(2004)
+                    .message("Course not found")
+                    .build();
+
     public static final Result PROJECT_WITH_ID_FOUND =
             new Result.Builder()
                     .status(HttpStatus.OK)
@@ -77,6 +112,20 @@ public final class ProjectsResults {
                     .status(HttpStatus.UNAUTHORIZED)
                     .code(2051)
                     .message("No Persons found with the given search parameters")
+                    .build();
+
+    public static final Result PROJECT_REGISTERED_SUCCESSFULLY =
+            new Result.Builder()
+                    .status(HttpStatus.OK)
+                    .code(2060)
+                    .message("Project registered successfully")
+                    .build();
+
+    public static final Result PROJECT_ALREADY_EXISTS =
+            new Result.Builder()
+                    .status(HttpStatus.CONFLICT)
+                    .code(2061)
+                    .message("Project with this name already exists")
                     .build();
 
     static Stream<Result> toStream() {
