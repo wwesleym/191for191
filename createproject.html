@@ -380,6 +380,7 @@
 <!-- JAVASCRIPT -->
 
 <!-- https://www.w3schools.com/howto/howto_js_collapsible.asp-->
+<script type="text/javascript" src="js/backend-talker.js"></script>
 <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
@@ -480,7 +481,23 @@
             return;
         }
 
-        window.location.replace('projects.html')
+        const body = {
+            "name": titleValue,
+            "teamSize": teamMemValue.split(",").length,
+            "sponsorName": sponsorValue,
+            "description": descValue,
+            "video": linkValue,
+            "image": null,
+            "state": null,
+            "courseDepartment": deptValue,
+            "courseNumber": courseNumValue,
+            "year": parseInt(yearValue),
+            "term": quarterValue
+        };
+
+        insertProject(body);
+
+        // window.location.replace('projects.html')
     }
 </script>
 

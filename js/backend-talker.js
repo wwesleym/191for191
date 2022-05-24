@@ -1,30 +1,88 @@
-const options = {
-    method: "GET",
+const config = {
     baseURL: "http://localhost:8082",
-    url: "/projects/search/name",
-    data: {
-        "name": "191"
+    endpoints: {
+        projectSearchName: "/projects/search/name",
+        projectInsert: "/projects/insert"
     }
 };
 
-const url = new URL(options.baseURL+options.url);
-url.search = new URLSearchParams(options.data);
 
-let searchButton = document.getElementById("submitFilterButton");
-let displayDiv = document.getElementById("project-table-output");
 
-searchButton.onclick = function() {
-    fetch(url)
+function insertProject(data) {
+    const body = {
+        "name": data.name,
+        "teamSize": data.teamSize,
+        "sponsorName": data.sponsorName,
+        "description": data.description,
+        "video": data.video,
+        "image": data.image,
+        "state": data.state,
+        "courseDepartment": data.courseDepartment,
+        "courseNumber": data.courseNumber,
+        "year": data.year,
+        "term": data.term
+    }
+
+    const params = {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify(body, null, 4)
+    }
+
+    const url = new URL(config.baseURL+config.endpoints.projectInsert);
+
+    console.log(url, JSON.stringify(params, null, 4));
+
+    fetch(url, params)
         .then(response => response.json())
         .then(data => {
             console.log(JSON.stringify(data.project, null, 4));
-            displayDiv.innerHTML = formatResponse(data.project);
+            localStorage.setItem("projectData", data.project);
+            window.location.href = "projects.html";
+            displayProject("project-table-output", localStorage.getItem("projectData"));
         })
-};
+}
+
+
+let searchButton = document.getElementById("submitFilterButton");
+if (searchButton) {
+    searchButton.onclick = function() {
+
+        const options = {
+            method: "GET",
+            baseURL: "http://localhost:8082",
+            url: "/projects/search/name",
+            data: {
+                "name": "191"
+            }
+        };
+
+        const url = new URL(options.baseURL+options.url);
+        url.search = new URLSearchParams(options.data);
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(JSON.stringify(data.project, null, 4));
+                displayProject("project-table-output", data.project);
+            })
+            .catch(error => alert(JSON.stringify(error.data.response, null, 4)))
+    };
+}
+
+
+function displayProject(tagId, data) {
+    let displayDiv = document.getElementById(tagId);
+    console.log(data);
+    displayDiv.innerHTML = formatResponse(data);
+}
+
 
 function formatResponse(data) {
-    let tableText = "";
-    tableText += `
+    let tableText = `
     <table>
         <thead>
             <tr>
