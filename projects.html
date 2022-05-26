@@ -13,6 +13,7 @@
             padding: 0;
             border: black solid 1px;
         }
+        
         td {
             border: black solid 1px;
             max-height: 20px;
@@ -86,11 +87,11 @@
             <span class="projects-dept-dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
                         <span id="selectedDept">Department</span>
-                    </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">IN4MATX</a></li>
-                    <li><a class="dropdown-item" href="#">COMPSCI</a></li>
-                </ul>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">IN4MATX</a></li>
+                <li><a class="dropdown-item" href="#">COMPSCI</a></li>
+            </ul>
             </span>
 
             <div class="projects-course-dropdown">
@@ -199,7 +200,7 @@
         var courseNumValue = $('#selectedCourseNum').text();
         var quarterValue = $('#selectedQuart').text();
         var yearValue = $('#selectedYear').text();
-        
+
         // flags are true when the filter is selected
         var deptFlag = false;
         var courseNumFlag = false;
@@ -218,7 +219,7 @@
         if (yearValue != "Year") {
             yearFlag = true;
         }
-        
+
         // search thru database when filter is selected (flag is true)
         const payload = {
             "courseDepartment": deptFlag ? deptValue : null,
@@ -229,7 +230,6 @@
 
         searchProjects(payload);
     }
-    
 </script>
 
 <script type="text/javascript" src="js/backend-talker.js"></script>
