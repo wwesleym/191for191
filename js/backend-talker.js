@@ -40,48 +40,57 @@ function insertProject(data) {
         .then(response => response.json())
         .then(data => {
             console.log(JSON.stringify(data.project, null, 4));
-            localStorage.setItem("projectData", data.project);
+            // localStorage.setItem("projectData", data.project);
             window.location.href = "projects.html";
-            displayProject("project-table-output", localStorage.getItem("projectData"));
+            // displayProject("project-table-output", localStorage.getItem("projectData"));
         })
 }
 
 
-let searchButton = document.getElementById("submitFilterButton");
-if (searchButton) {
-    searchButton.onclick = function() {
-
-        const options = {
-            method: "GET",
-            baseURL: "http://localhost:8082",
-            url: "/projects/search/name",
-            data: {
-                "name": "191"
-            }
-        };
-
-        const url = new URL(options.baseURL+options.url);
-        url.search = new URLSearchParams(options.data);
-        
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(JSON.stringify(data.project, null, 4));
-                displayProject("project-table-output", data.project);
-            })
-            .catch(error => alert(JSON.stringify(error.data.response, null, 4)))
+function searchProjects(searchRequest) {
+    const options = {
+        method: "GET",
+        baseURL: "http://localhost:8082",
+        url: "/projects/search",
+        data: {
+            year: searchRequest.year,
+            term: searchRequest.term,
+            courseDepartment: searchRequest.courseDepartment,
+            courseNumber: searchRequest.courseNumber,
+        }
     };
-}
+
+    // remove null values
+    Object.keys(options.data).forEach(key => {
+        if (options.data[key] === null) {
+            delete options.data[key];
+        }
+        });
+
+    const url = new URL(options.baseURL+options.url);
+    url.search = new URLSearchParams(options.data);
+    console.log(options);
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(JSON.stringify(data, null, 4));
+            displayProjects("project-table-output", data.projects);
+        })
+        // .catch(error => alert(JSON.stringify(error, null, 4)))
+};
 
 
-function displayProject(tagId, data) {
+
+function displayProjects(tagId, projects) {
     let displayDiv = document.getElementById(tagId);
-    console.log(data);
-    displayDiv.innerHTML = formatResponse(data);
+    // console.log(projects);
+    displayDiv.innerHTML = formatResponse(projects);
 }
 
 
 function formatResponse(data) {
+    console.log(data);
     let tableText = `
     <table>
         <thead>
@@ -90,19 +99,23 @@ function formatResponse(data) {
                 <th>Sponsor</th>
                 <th>Description</th>
                 <th>State</th>
-                <th>Course id</th>
+                <th>Quarter</th>
+                <th>Year</th>
                 <th>Video</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>${data.name}</td>
-                <td>${data.sponsorName}</td>
-                <td>${data.description}</td>
-                <td>${data.state}</td>
-                <td>${data.courseId}</td>
-                <td><a href="${data.video}" target='_blank'>link</a></td>
-            </tr>
+            ${data.map(project =>
+                `<tr>
+                    <td>${project.name}</td>
+                    <td>${project.sponsorName}</td>
+                    <td>${project.description}</td>
+                    <td>${project.state}</td>
+                    <td>${project.term}</td>
+                    <td>${project.year}</td>
+                    <td><a href="${project.video}" target='_blank'>link</a></td>
+                </tr>`
+            ).join('')}
         </tbody>
     </table>`;
     return tableText;

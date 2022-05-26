@@ -220,10 +220,16 @@
         }
         
         // search thru database when filter is selected (flag is true)
+        const payload = {
+            "courseDepartment": deptFlag ? deptValue : null,
+            "courseNumber": courseNumFlag ? courseNumValue : null,
+            "term": quarterFlag ? quarterValue : null,
+            "year": yearFlag ? parseInt(yearValue) : null
+        }
 
+        searchProjects(payload);
     }
-
-
+    
 </script>
 
 <script type="text/javascript" src="js/backend-talker.js"></script>
