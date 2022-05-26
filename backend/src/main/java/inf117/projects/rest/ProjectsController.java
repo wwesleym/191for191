@@ -3,8 +3,10 @@ package inf117.projects.rest;
 import inf117.projects.core.result.ProjectsResults;
 import inf117.projects.model.request.ProjectInsertRequestModel;
 import inf117.projects.model.request.ProjectModelRequest;
+import inf117.projects.model.request.ProjectSearchRequestModel;
 import inf117.projects.model.request.SponsorModelRequest;
 import inf117.projects.model.response.ProjectInsertResponseModel;
+import inf117.projects.model.response.ProjectSearchResponseModel;
 import inf117.projects.model.response.SponsorSearchResponseModel;
 import inf117.projects.repo.entity.CourseInstance;
 import inf117.projects.repo.entity.Project;
@@ -22,6 +24,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class ProjectsController {
@@ -32,6 +35,19 @@ public class ProjectsController {
     public ProjectsController(ProjectRepo repo, Validate validate) {
         this.repo = repo;
         this.validate = validate;
+    }
+
+    @GetMapping("/projects/search")
+    ResponseEntity<ProjectSearchResponseModel> projectSearch(
+            ProjectSearchRequestModel request
+    ) {
+        List<Project> projects = this.repo.projectSearch(request);
+
+        ProjectSearchResponseModel response = new ProjectSearchResponseModel();
+        response.setProjects(projects);
+        response.setResult(ProjectsResults.PROJECTS_FOUND_WITHIN_SEARCH);
+
+        return response.toResponse();
     }
 
     @GetMapping("/projects/search/name")

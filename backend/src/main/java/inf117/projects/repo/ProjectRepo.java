@@ -5,8 +5,7 @@ import inf117.projects.core.result.ProjectsResults;
 import inf117.projects.model.request.ProjectSearchRequestModel;
 import inf117.projects.repo.entity.CourseInstance;
 import inf117.projects.repo.entity.Project;
-import inf117.projects.repo.entity.type.CourseTerm;
-import inf117.projects.repo.entity.type.ProjectState;
+import inf117.projects.repo.entity.type.*;
 import inf117.projects.repo.entity.Sponsor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,12 +31,151 @@ public class ProjectRepo {
 
     //language=sql
     private static String PROJECT_SEARCH_WITH_DEFAULT =
-            "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, p.image, p.state, p.course_instance_id " +
+            "SELECT p.id, p.name, p.team_size, s.name, p.project_description, p.pitch_video, " +
+                    "p.image, p.state, p.course_instance_id, p.term, p.year, ci.department, ci.number " +
             "FROM `191for191`.project p " +
-            "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id ";
+            "JOIN `191for191`.sponsor s ON s.id = p.sponsor_id " +
+            "JOIN `191for191`.course_instance ci ON ci.id = p.course_instance_id ";
 
     public List<Project> projectSearch(ProjectSearchRequestModel request) {
-        return null;
+        StringBuilder sql = new StringBuilder(PROJECT_SEARCH_WITH_DEFAULT);
+        MapSqlParameterSource source = new MapSqlParameterSource();
+        boolean whereAdded = false;
+
+        if (request.getName() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            String wildcardSearch = "%" + request.getName() + "%";
+
+            sql.append(" p.name LIKE :name ");
+            source.addValue("name", wildcardSearch, Types.VARCHAR);
+        }
+
+        if (request.getTeamSize() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            sql.append(" p.teamSize = :size ");
+            source.addValue("size", request.getTeamSize(), Types.INTEGER);
+        }
+
+        if (request.getSponsor() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            String wildcardSearch = "%" + request.getSponsor() + "%";
+
+            sql.append(" s.name LIKE :sName ");
+            source.addValue("sName", wildcardSearch, Types.VARCHAR);
+        }
+
+        if (request.getYear() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            sql.append(" p.year = :size ");
+            source.addValue("size", request.getYear(), Types.INTEGER);
+        }
+
+        if (request.getTerm() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            String wildcardSearch = "%" + request.getTerm() + "%";
+
+            sql.append(" p.term LIKE :term ");
+            source.addValue("term", wildcardSearch, Types.VARCHAR);
+        }
+
+        if (request.getCourseDepartment() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            String wildcardSearch = "%" + request.getCourseDepartment() + "%";
+
+            sql.append(" ci.department LIKE :department ");
+            source.addValue("department", wildcardSearch, Types.VARCHAR);
+        }
+
+        if (request.getCourseNumber() != null) {
+            if (whereAdded) {
+                sql.append(" AND ");
+            } else {
+                sql.append(" WHERE ");
+                whereAdded = true;
+            }
+
+            String wildcardSearch = "%" + request.getCourseNumber() + "%";
+
+            sql.append(" ci.number LIKE :number ");
+            source.addValue("number", wildcardSearch, Types.VARCHAR);
+        }
+
+        ProjectOrderBy orderBy = ProjectOrderBy.fromString(request.getOrderBy());
+        sql.append(orderBy.toSql());
+
+        ProjectDirection direction = ProjectDirection.fromString(request.getDirection());
+        sql.append(direction.toSql());
+
+        SearchLimit limit = SearchLimit.fromInt(request.getLimit());
+        sql.append(limit.toSql());
+
+        String offset;
+        if (request.getPage() != null) {
+            if (request.getPage() < 1) { throw new ResultError(ProjectsResults.INVALID_PAGE); }
+
+            if (request.getLimit() == null) {
+                offset = " OFFSET " + (request.getPage() - 1) * 10 + " ";
+            } else {
+                offset = " OFFSET " + (request.getPage() - 1) * request.getLimit() + " ";
+            }
+        } else {
+            offset = " OFFSET " + 0 + " ";
+        }
+        sql.append(offset);
+
+        return this.template.query(
+                sql.toString(),
+                source,
+                (rs, rowNum) ->
+                        new Project()
+                                .setId(rs.getLong("p.id"))
+                                .setName(rs.getString("p.name"))
+                                .setTeamSize(rs.getInt("p.team_size"))
+                                .setSponsorName(rs.getString("s.name"))
+                                .setDescription(rs.getString("p.project_description"))
+                                .setVideo(rs.getString("p.pitch_video"))
+                                .setImage(rs.getString("p.image"))
+                                .setState(ProjectState.fromString(rs.getString("p.state")))
+                                .setCourseId(rs.getInt("p.course_instance_id"))
+                                .setYear(rs.getInt("p.year"))
+                                .setTerm(CourseTerm.fromString(rs.getString("p.term")))
+        );
     }
 
     public Project projectByProjectName(String name) {
