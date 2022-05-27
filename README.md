@@ -23,8 +23,6 @@ No Idea what this does but i did see it somewhere in the files we have so hopefu
 ## Notes
 Andrew Kim: I used XAMPP Control Panel as a localhost and tested it there. I had to put all the files into a folder named 191for191-main. When I installed it the place I put the files was C:\xampp\htdocs\191for191-main. Then using http://localhost/191for191-main/createproject.html I added data to the table through using the form.
 
-### Help
-I personally have no idea what this is going on so this is a placeholder.
 
 ### JsonInclude
 Up to this point we have almost not much to show but will work on later.
@@ -35,9 +33,4 @@ Hopefully we add stuff to the database and get things out of it too.
 # Endpoints
 Here is where the endpoints are: [/backend](/backend/README.md)
 
-## Hello
-Please end my suffering
 
-
-### Path
-But here is some filler stuff to fill the void in my soul and my github account
