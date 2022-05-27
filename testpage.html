@@ -1,20 +1,281 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            table {
-                padding: 0;
-                border: black solid 1px;
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title>191 for 191!</title>
+    <style>
+        table {
+            padding: 0;
+            border: black solid 1px;
+        }
+        
+        td {
+            border: black solid 1px;
+            max-height: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- navigation bar at the top of the page -->
+    <header class="navbar-top">
+        <div class="navbar-topright">
+            <!-- <input class="navbar_search" type="text" placeholder="Search"> -->
+        </div>
+        <!-- <a href="#" target="_blank"><img src="" class="notif_logo"></a>
+      <a href="#" target="_blank"><img src="" class="profile_pic"></a> -->
+
+    </header>
+
+    <!-- side bar -->
+    <div class="sidebar">
+        <nav id="sidebarMenu">
+            <a href="https://www.ics.uci.edu/" target="_blank"><img src="images/ics_logo.png" class="ics_logo"></a>
+            <ul class="nav-list mb-auto">
+                <li>
+                    <a class="nav-link" href="dashboard.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                            <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                          </svg> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link active" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                            <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                          </svg> Projects
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="media.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                          </svg> Media
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <a class="setting-link" href="settings.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                  </svg> Settings
+            </a>
+        </nav>
+    </div>
+
+    <!-- mainbody -->
+    <main class="main-body">
+        <div style="display: flex; flex-direction: right;">
+            <h4>Projects</h4>
+            <a href="createproject.html" class="addprojectbutton" role="button">
+                + Add Project
+            </a>
+        </div>
+
+        <div class="projects-dropdown" style="display: flex; flex-direction: right; padding-top: 30px;">
+            <div class="projects-body-filters">Filters:</div>
+
+            <span class="projects-dept-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                        <span id="selectedDept">Department</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">IN4MATX</a></li>
+                <li><a class="dropdown-item" href="#">COMPSCI</a></li>
+            </ul>
+            </span>
+
+            <div class="projects-course-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    <span id="selectedCourseNum">Course</span>
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">117</a></li>
+                    <li><a class="dropdown-item" href="#">191</a></li>
+                </ul>
+            </div>
+
+            <div class="projects-q-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    <span id="selectedQuart">Quarter</span>
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Fall</a></li>
+                    <li><a class="dropdown-item" href="#">Winter</a></li>
+                    <li><a class="dropdown-item" href="#">Spring</a></li>
+                    <li><a class="dropdown-item" href="#">Summer</a></li>
+                </ul>
+            </div>
+
+            <div class="projects-y-dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#ffffff; color:#0064A4;">
+                    <span id="selectedYear">Year</span>
+                    </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">2022</a></li>
+                    <li><a class="dropdown-item" href="#">2021</a></li>
+                    <li><a class="dropdown-item" href="#">2020</a></li>
+                    <li><a class="dropdown-item" href="#">2019</a></li>
+                    <li><a class="dropdown-item" href="#">2018</a></li>
+                    <li><a class="dropdown-item" href="#">2017</a></li>
+                </ul>
+            </div>
+
+
+            <a class="btn btn-secondary btn-med disabled submitfilterbutton" role="button" aria-disabled="true" id="submitFilterButton" onclick="submitFilter()">
+                Submit
+            </a>
+        </div>
+
+        <div style="display: flex; flex-direction: right; padding-top: 30px;" id="project-table-output">
+            <p>project 1</p>
+            <!-- embedded link to project-->
+        </div>
+    </main>
+
+
+
+
+
+</body>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
             }
-            td {
-                border: black solid 1px;
-                max-height: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <button id="search">Search</button>
-        <div id="mypanel">asfads</div>
-    </body>
-    <script type="text/javascript" src="js/backend-talker.js"></script>
+        });
+    }
+
+    // enable submitFilter button when a filter is selected
+    var submitFilterButton = document.getElementById('submitFilterButton');
+
+    // selects option for course department
+    $('.projects-dropdown .projects-dept-dropdown li a').click(function() {
+        $('#selectedDept').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for course number
+    $('.projects-dropdown .projects-course-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedCourseNum').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for quarter
+    $('.projects-dropdown .projects-q-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedQuart').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    // selects option for year
+    $('.projects-dropdown .projects-y-dropdown .dropdown-menu li a').click(function() {
+        $('#selectedYear').text($(this).text());
+        submitFilterButton.setAttribute('class', 'btn btn-secondary btn-med submitfilterbutton')
+        submitFilterButton.removeAttribute('aria-disabled');
+    });
+
+    function submitFilter() {
+        var deptValue = $('#selectedDept').text();
+        var courseNumValue = $('#selectedCourseNum').text();
+        var quarterValue = $('#selectedQuart').text();
+        var yearValue = $('#selectedYear').text();
+
+        // flags are true when the filter is selected
+        var deptFlag = false;
+        var courseNumFlag = false;
+        var quarterFlag = false;
+        var yearFlag = false;
+
+        if (deptValue != "Department") {
+            deptFlag = true;
+        }
+        if (courseNumValue != "Course") {
+            courseNumFlag = true;
+        }
+        if (quarterValue != "Quarter") {
+            quarterFlag = true;
+        }
+        if (yearValue != "Year") {
+            yearFlag = true;
+        }
+
+        // search thru database when filter is selected (flag is true)
+        const payload = {
+            "courseDepartment": deptFlag ? deptValue : null,
+            "courseNumber": courseNumFlag ? courseNumValue : null,
+            "term": quarterFlag ? quarterValue : null,
+            "year": yearFlag ? parseInt(yearValue) : null
+        }
+
+        // searchProjects(payload);
+        
+    }
+</script>
+<script>
+    let displayDiv = document.getElementById("project-table-output");
+    displayDiv.innerHTML = `<table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sponsor</th>
+                <th>Description</th>
+                <th>State</th>
+                <th>Quarter</th>
+                <th>Year</th>
+                <th>Video</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>Test Project 1</td>
+                    <td>Matthew Bietz</td>
+                    <td>this is a sample entry.</td>
+                    <td>IN_PROGRESS</td>
+                    <td>WINTER</td>
+                    <td>2022</td>
+                    <td><a href="https://www.youtube.com/watch?v=UyjVMtTk1XY&list=PLcm9UtazJCOLYIKaXcD1HVB9NGc4kuD0b&index=2" target='_blank'>link</a></td>
+                </tr><tr>
+                    <td>Test Project 5</td>
+                    <td>John Doe</td>
+                    <td>this is, once again, another sample entry.</td>
+                    <td>COMPLETED</td>
+                    <td>SPRING</td>
+                    <td>2020</td>
+                    <td><a href="https://www.youtube.com/watch?v=UyjVMtTk1XY&list=PLcm9UtazJCOLYIKaXcD1HVB9NGc4kuD0b&index=2" target='_blank'>link</a></td>
+                </tr><tr>
+                    <td>191 for 191</td>
+                    <td>Matthew Bietz</td>
+                    <td>A website to share and discover past, present, and future UCI capstones projects.</td>
+                    <td>IN_PROGRESS</td>
+                    <td>SPRING</td>
+                    <td>2017</td>
+                    <td><a href="https://www.youtube.com/watch?v=UyjVMtTk1XY&list=PLcm9UtazJCOLYIKaXcD1HVB9NGc4kuD0b&index=2" target='_blank'>link</a></td>
+                </tr>
+        </tbody>
+    </table>`;
+</script>
+
+<script type="text/javascript" src="js/backend-talker.js"></script>
+
 </html>
