@@ -15,6 +15,6 @@ Group 191 for 191
 
 
 # Endpoints
-Here is where the endpoints are: [/backend](/backend/README.md)
+Here is where the endpoints are: [backend](/backend/README.md)
 
 
