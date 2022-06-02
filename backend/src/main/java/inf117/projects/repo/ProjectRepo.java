@@ -360,6 +360,11 @@ public class ProjectRepo {
                         return course.setProfessorName(professorName);
                     }
             );
+
+            if (courses.isEmpty()) {
+                throw new ResultError(ProjectsResults.COURSE_NOT_FOUND);
+            }
+
             return courses.get(0);
         } catch (DataAccessException e) {
             throw new ResultError(ProjectsResults.COURSE_NOT_FOUND);
