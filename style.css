@@ -324,9 +324,12 @@ body {
     padding-left: 5%;
 }
 
+.submitfilterbutton-location {
+    padding-left: 20%;
+}
+
 .submitfilterbutton {
     position: absolute;
-    right: 10%;
     background-color: #0064A4;
     color: #ffffff;
     cursor: pointer;
