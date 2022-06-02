@@ -517,7 +517,7 @@ project: Project
         "state": "IN_PROGRESS",
         "courseId": 36050,
         "year": 2022,
-        "term": SPRING
+        "term": "SPRING"
     }
 }</pre></td>
     </tr>
